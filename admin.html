@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Admin | Mercadimas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{--green:#137c3a;--green-2:#0f5f2e;--lime:#e9f9d8;--yellow:#ffd23f;--orange:#ff8f1f;--red:#dc2626;--bg:#f6f8f3;--paper:#fff;--paper-2:#fbfff7;--ink:#122016;--muted:#68766d;--line:rgba(18,32,22,.10);--shadow:0 22px 60px rgba(14,82,43,.13);--soft:0 12px 32px rgba(18,32,22,.08);--radius:24px;--container:1280px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}body{margin:0;min-height:100vh;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:radial-gradient(circle at 8% 6%,rgba(255,210,63,.28),transparent 30%),radial-gradient(circle at 92% 12%,rgba(19,124,58,.18),transparent 30%),linear-gradient(180deg,#fbfff8 0%,var(--bg) 56%,#f2f6ee 100%)}button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity:.52;cursor:not-allowed}img{max-width:100%;display:block}.hidden{display:none!important}.container{max-width:var(--container);margin:0 auto;padding:0 18px}.btn{border:0;border-radius:15px;min-height:44px;padding:11px 15px;font-weight:850;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .18s ease,filter .18s ease}.btn:hover{transform:translateY(-2px);filter:brightness(1.02)}.btnGreen{background:var(--green);color:white}.btnDark{background:#111827;color:white}.btnGhost{background:white;color:var(--ink);border:1px solid var(--line)}.btnYellow{background:var(--yellow);color:#17220f}.btnDanger{background:rgba(220,38,38,.10);color:#991b1b;border:1px solid rgba(220,38,38,.22)}
+    .loginPage{min-height:100vh;display:grid;place-items:center;padding:24px}.loginCard{width:min(440px,100%);background:rgba(255,255,255,.84);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:32px;padding:28px;backdrop-filter:blur(18px);animation:rise .35s ease both}.logo{width:64px;height:64px;border-radius:22px;background:linear-gradient(135deg,var(--green),#19a858);display:grid;place-items:center;color:white;font-size:31px;box-shadow:0 16px 34px rgba(19,124,58,.24);margin-bottom:16px}.loginCard h1{font-size:32px;line-height:1;letter-spacing:-.06em;margin:0 0 9px}.loginCard p{margin:0 0 20px;color:var(--muted);font-weight:650;line-height:1.5}.field{display:grid;gap:7px}.field label,.label{font-size:12px;color:var(--muted);font-weight:900}.input,textarea,select{width:100%;min-height:45px;border:1px solid var(--line);border-radius:15px;background:white;color:var(--ink);outline:none;padding:0 12px;font-weight:720}.input:focus,textarea:focus,select:focus{border-color:rgba(19,124,58,.45);box-shadow:0 0 0 4px rgba(19,124,58,.08)}textarea{padding:12px;resize:vertical}.formGrid{display:grid;gap:12px}.loginError{margin-top:12px;color:#991b1b;font-weight:800;font-size:13px}.topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:blur(18px) saturate(160%);border-bottom:1px solid var(--line)}.topbarInner{height:74px;display:flex;justify-content:space-between;align-items:center;gap:14px}.brand{display:flex;align-items:center;gap:12px}.brandLogo{width:46px;height:46px;border-radius:16px;background:linear-gradient(135deg,var(--green),#19a858);display:grid;place-items:center;color:white;font-size:24px;box-shadow:0 14px 30px rgba(19,124,58,.23)}.brandTitle{font-size:22px;font-weight:950;letter-spacing:-.05em}.brandSub{font-size:12px;color:var(--muted);font-weight:750;margin-top:2px}.userBox{display:flex;gap:10px;align-items:center}.userEmail{font-size:13px;color:var(--muted);font-weight:800;max-width:240px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.hero{padding:24px 0 8px}.heroPanel{background:linear-gradient(135deg,#0f5f2e,#158348 60%,#1aaa5b);color:white;border-radius:32px;padding:28px;box-shadow:var(--shadow);display:flex;justify-content:space-between;gap:20px;align-items:end;overflow:hidden;position:relative}.heroPanel::after{content:"";position:absolute;right:-70px;top:-90px;width:240px;height:240px;border-radius:999px;background:rgba(255,210,63,.28)}.heroPanel h1{position:relative;margin:0;font-size:clamp(30px,4vw,50px);letter-spacing:-.06em;line-height:.95}.heroPanel p{position:relative;margin:10px 0 0;color:rgba(255,255,255,.82);font-weight:650}.stats{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.stat{background:white;border:1px solid var(--line);border-radius:24px;padding:18px;box-shadow:var(--soft)}.stat b{font-size:31px;letter-spacing:-.04em}.stat span{display:block;color:var(--muted);font-size:13px;font-weight:800;margin-top:4px}.layout{display:grid;grid-template-columns:390px 1fr;gap:18px;padding-bottom:50px}.panel{background:rgba(255,255,255,.84);border:1px solid var(--line);border-radius:26px;box-shadow:var(--soft);backdrop-filter:blur(18px);overflow:hidden}.panelHead{padding:17px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px}.panelHead h2{margin:0;font-size:18px;letter-spacing:-.03em}.panelBody{padding:18px}.tabs{display:flex;gap:8px;flex-wrap:wrap}.tab{border:1px solid var(--line);background:white;border-radius:999px;padding:9px 13px;font-weight:900;color:#35523d}.tab.active{background:var(--green);color:white;border-color:transparent}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}.actions{display:flex;gap:10px;flex-wrap:wrap}.productList{display:grid;gap:10px}.productRow{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;background:white;border:1px solid var(--line);border-radius:22px;padding:12px;animation:rise .28s ease both;transition:transform .18s ease,box-shadow .18s ease}.productRow:hover{transform:translateY(-2px);box-shadow:var(--soft)}@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}.thumb{width:64px;height:64px;border-radius:18px;background:linear-gradient(135deg,#edf8e6,#fff7cf);display:grid;place-items:center;overflow:hidden;font-size:29px}.thumb img{width:100%;height:100%;object-fit:cover}.rowName{font-weight:950;letter-spacing:-.025em;line-height:1.15}.rowMeta{color:var(--muted);font-size:12px;font-weight:760;margin-top:5px;display:flex;gap:7px;flex-wrap:wrap}.pill{background:#f1f8ee;border:1px solid rgba(19,124,58,.12);padding:5px 8px;border-radius:999px}.rowActions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}.iconBtn{width:38px;height:38px;border-radius:13px;border:1px solid var(--line);background:#fff;font-weight:900}.iconBtn.active{background:#e9f9d8;color:var(--green);border-color:rgba(19,124,58,.22)}.iconBtn.danger{background:rgba(220,38,38,.10);color:#991b1b;border-color:rgba(220,38,38,.18)}.toolbar{display:grid;grid-template-columns:1fr 180px;gap:10px;margin-bottom:12px}.preview{height:160px;border:1px dashed rgba(19,124,58,.25);border-radius:22px;background:#fbfff7;display:grid;place-items:center;overflow:hidden;color:var(--muted);font-weight:850}.preview img{width:100%;height:100%;object-fit:cover}.notice{background:#fff8d6;border:1px solid rgba(255,210,63,.45);border-radius:18px;padding:12px;color:#6b5300;font-weight:750;font-size:13px;line-height:1.45}.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(10px);z-index:100;background:#111827;color:white;border-radius:999px;padding:11px 15px;opacity:0;pointer-events:none;font-weight:850;box-shadow:0 20px 60px rgba(0,0,0,.18);max-width:calc(100vw - 24px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:.2s}.toast.show{opacity:1;transform:translateX(-50%)}.settingsGrid{display:grid;gap:12px}.help{font-size:12px;color:var(--muted);font-weight:700;line-height:1.45;margin-top:5px}.hiddenFile{display:none}
+    @media (max-width:1040px){.layout{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}@media (max-width:720px){.topbarInner{height:auto;padding:12px 0;align-items:flex-start}.userBox{flex-wrap:wrap;justify-content:flex-end}.heroPanel{display:block}.stats{grid-template-columns:1fr 1fr}.productRow{grid-template-columns:56px 1fr}.rowActions{grid-column:1/-1;justify-content:flex-start}.toolbar,.two,.three{grid-template-columns:1fr}.brandSub,.userEmail{display:none}}@media (max-width:430px){.container{padding:0 12px}.stats{grid-template-columns:1fr}.loginCard{padding:22px;border-radius:26px}.panel{border-radius:22px}}
+  </style>
+</head>
+<body>
+  <section id="loginView" class="loginPage">
+    <div class="loginCard">
+      <div class="logo">🛒</div>
+      <h1>Admin Mercadimas</h1>
+      <p>Ingresa para crear productos, actualizar precios, controlar stock y configurar el catálogo público.</p>
+      <form id="loginForm" class="formGrid">
+        <div class="field"><label>Correo administrador</label><input class="input" id="email" type="email" autocomplete="email" required /></div>
+        <div class="field"><label>Contraseña</label><input class="input" id="password" type="password" autocomplete="current-password" required /></div>
+        <button class="btn btnGreen" type="submit">Entrar al panel</button>
+        <div id="loginError" class="loginError hidden"></div>
+      </form>
+      <p class="help">El usuario debe existir en Firebase Authentication y su UID debe estar creado en la colección <b>admins</b>.</p>
+    </div>
+  </section>
+
+  <section id="appView" class="hidden">
+    <header class="topbar">
+      <div class="container topbarInner">
+        <div class="brand"><div class="brandLogo">🛒</div><div><div class="brandTitle">Mercadimas</div><div class="brandSub">Panel de inventario y catálogo</div></div></div>
+        <div class="userBox"><span class="userEmail" id="userEmail"></span><a href="catalogo.html" target="_blank" class="btn btnGhost">Ver catálogo</a><button class="btn btnDark" id="logoutBtn">Salir</button></div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero"><div class="heroPanel"><div><h1>Control total del supermercado.</h1><p>Administra productos, precios, imágenes, descripciones, cantidades y disponibilidad en tiempo real.</p></div><button class="btn btnYellow" id="seedBtn">Crear productos ejemplo</button></div></section>
+      <section class="stats"><div class="stat"><b id="statTotal">0</b><span>Total productos</span></div><div class="stat"><b id="statVisible">0</b><span>Visibles</span></div><div class="stat"><b id="statUnits">0</b><span>Unidades en stock</span></div><div class="stat"><b id="statLow">0</b><span>Bajo stock</span></div></section>
+
+      <section class="layout">
+        <aside class="panel">
+          <div class="panelHead"><h2 id="formTitle">Nuevo producto</h2><button class="btn btnGhost" id="newBtn">Nuevo</button></div>
+          <div class="panelBody">
+            <form id="productForm" class="formGrid">
+              <input type="hidden" id="productId" />
+              <div class="two"><div class="field"><label>Nombre</label><input class="input" id="pName" placeholder="Ej: Arroz Diana 500g" required /></div><div class="field"><label>Código / SKU</label><input class="input" id="pCode" placeholder="AB-001" /></div></div>
+              <div class="two"><div class="field"><label>Categoría</label><select id="pCategory" required></select></div><div class="field"><label>Marca</label><input class="input" id="pBrand" placeholder="Marca" /></div></div>
+              <div class="three"><div class="field"><label>Presentación</label><input class="input" id="pUnit" placeholder="Unidad, Libra, 500g…" value="Unidad" /></div><div class="field"><label>Precio</label><input class="input" id="pPrice" type="number" min="0" step="100" required /></div><div class="field"><label>Descuento %</label><input class="input" id="pDiscount" type="number" min="0" max="90" step="1" value="0" /></div></div>
+              <div class="two"><div class="field"><label>Cantidad en stock</label><input class="input" id="pStock" type="number" min="0" step="1" value="0" /></div><div class="field"><label>Alerta bajo stock</label><input class="input" id="pMinStock" type="number" min="0" step="1" value="5" /></div></div>
+              <div class="field"><label>Descripción</label><textarea id="pDesc" rows="3" placeholder="Descripción corta del producto"></textarea></div>
+              <div class="field"><label>Imagen por URL</label><input class="input" id="pImage" placeholder="https://…" /></div>
+              <div class="actions"><button class="btn btnGhost" type="button" id="uploadBtn">Subir imagen liviana</button><input class="hiddenFile" id="imageFile" type="file" accept="image/*" /><button class="btn btnGhost" type="button" id="clearImage">Quitar imagen</button></div>
+              <div class="preview" id="imagePreview">Vista previa de imagen</div>
+              <div class="two"><label class="field"><span class="label">Visible en catálogo</span><select id="pActive"><option value="true">Sí</option><option value="false">No</option></select></label><label class="field"><span class="label">Destacado</span><select id="pFeatured"><option value="false">No</option><option value="true">Sí</option></select></label></div>
+              <div class="actions"><button class="btn btnGreen" type="submit">Guardar producto</button><button class="btn btnGhost" type="button" id="resetBtn">Limpiar</button></div>
+            </form>
+            <div class="notice" style="margin-top:14px">Para mejor rendimiento, usa enlaces de imagen o imágenes comprimidas. Firestore no debe guardar archivos muy pesados.</div>
+          </div>
+        </aside>
+
+        <section class="panel">
+          <div class="panelHead"><h2>Inventario</h2><div class="tabs"><button class="tab active" data-tab="products">Productos</button><button class="tab" data-tab="settings">Configuración</button></div></div>
+          <div class="panelBody" id="productsTab">
+            <div class="toolbar"><input class="input" id="searchInventory" placeholder="Buscar por nombre, código, categoría…" /><select id="filterCategory"></select></div>
+            <div class="productList" id="productList"></div>
+            <div class="notice hidden" id="emptyInventory">Aún no hay productos. Crea el primero o usa el botón de productos ejemplo.</div>
+          </div>
+          <div class="panelBody hidden" id="settingsTab">
+            <form id="settingsForm" class="settingsGrid">
+              <div class="two"><div class="field"><label>Nombre del negocio</label><input class="input" id="sStoreName" /></div><div class="field"><label>Slogan</label><input class="input" id="sSlogan" /></div></div>
+              <div class="field"><label>WhatsApp del negocio</label><input class="input" id="sWhatsapp" placeholder="573001112233" /><p class="help">Formato recomendado: 57 + número de Colombia, sin espacios ni signos.</p></div>
+              <div class="field"><label>Mensaje inicial de WhatsApp</label><textarea id="sIntro" rows="2"></textarea><p class="help">Puedes usar {{store}} para insertar el nombre del negocio.</p></div>
+              <div class="field"><label>Métodos de pago</label><textarea id="sPayments" rows="3" placeholder="Uno por línea"></textarea></div>
+              <div class="field"><label>Opciones de envío</label><textarea id="sShipping" rows="5" placeholder="id | nombre | costo | tiempo"></textarea><p class="help">Ejemplo: local | Envío local | 5000 | Hoy</p></div>
+              <button class="btn btnGreen" type="submit">Guardar configuración pública</button>
+            </form>
+          </div>
+        </section>
+      </section>
+    </main>
+  </section>
+  <div class="toast" id="toast"></div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+    import { getFirestore, collection, doc, getDoc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
+
+    const firebaseConfig = { apiKey:"AIzaSyAsVvq-okZdhi3eeigyw0CuNMgNe30mYJA", authDomain:"webcatalogo-e8b89.firebaseapp.com", projectId:"webcatalogo-e8b89", storageBucket:"webcatalogo-e8b89.firebasestorage.app", messagingSenderId:"603338095024", appId:"1:603338095024:web:8ffac945f31a0fc4d8be75" };
+    const app=initializeApp(firebaseConfig), auth=getAuth(app), db=getFirestore(app);
+    const CATEGORIES=["Abarrotes","Frutas y verduras","Lácteos","Carnes y congelados","Bebidas","Aseo del hogar","Cuidado personal","Mascotas","Bebés","Panadería","Droguería","Hogar","Otros"];
+    const ICONS={"Abarrotes":"🥫","Frutas y verduras":"🥦","Lácteos":"🥛","Carnes y congelados":"🥩","Bebidas":"🥤","Aseo del hogar":"🧽","Cuidado personal":"🧴","Mascotas":"🐾","Bebés":"🍼","Panadería":"🥖","Droguería":"💊","Hogar":"🏠","Otros":"🛒"};
+    const DEFAULT_SETTINGS={storeName:"Mercadimas",slogan:"Mercado, hogar y ahorro en un solo lugar",whatsappNumber:"573215416766",messageIntro:"Hola 👋 Quiero hacer un pedido en {{store}}:",paymentMethods:["Nequi","Daviplata","Transferencia bancaria","Efectivo","Contraentrega"],shippingOptions:[{id:"local",label:"Envío local",cost:5000,eta:"Hoy"},{id:"zona2",label:"Zona cercana",cost:8000,eta:"24–48h"},{id:"pickup",label:"Recoger en tienda",cost:0,eta:"Hoy"}]};
+    const $=(s,el=document)=>el.querySelector(s); const $$=(s,el=document)=>Array.from(el.querySelectorAll(s));
+    let products=[], settings={...DEFAULT_SETTINGS}, unsubscribe=null;
+    function money(n){return "$ "+new Intl.NumberFormat("es-CO").format(Math.round(Number(n||0)))}
+    function finalPrice(p){const pct=Math.max(0,Math.min(90,Number(p.discountPercent||0)));return pct>0?Math.round(Number(p.price||0)*(100-pct)/100):Number(p.price||0)}
+    function stock(p){return Math.max(0,Number(p.stock??0)||0)}
+    function escapeHTML(s){return String(s??"").replace(/[&<>'"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c]))}
+    function escapeAttr(s){return escapeHTML(s)}
+    function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("show"),2300)}
+    function showLoginError(msg){$("#loginError").textContent=msg;$("#loginError").classList.remove("hidden")}
+
+    function fillSelects(){
+      $("#pCategory").innerHTML=CATEGORIES.map(c=>`<option>${c}</option>`).join("");
+      $("#filterCategory").innerHTML=`<option value="Todos">Todas las categorías</option>`+CATEGORIES.map(c=>`<option>${c}</option>`).join("");
+    }
+    async function checkAdmin(user){ if(!user) return false; try{const snap=await getDoc(doc(db,"admins",user.uid)); return snap.exists();}catch(e){console.error(e); return false;} }
+    onAuthStateChanged(auth,async(user)=>{
+      if(!user){$("#loginView").classList.remove("hidden");$("#appView").classList.add("hidden"); if(unsubscribe) unsubscribe(); return;}
+      $("#userEmail").textContent=user.email||"Administrador";
+      const ok=await checkAdmin(user);
+      if(!ok){await signOut(auth); showLoginError("Este usuario no tiene permisos de administrador. Crea su UID en la colección admins."); return;}
+      $("#loginView").classList.add("hidden");$("#appView").classList.remove("hidden"); fillSelects(); await loadSettings(); listenProducts();
+    });
+    $("#loginForm").addEventListener("submit",async(e)=>{e.preventDefault();$("#loginError").classList.add("hidden");try{await signInWithEmailAndPassword(auth,$("#email").value.trim(),$("#password").value)}catch(err){console.error(err);showLoginError("No se pudo iniciar sesión. Revisa correo y contraseña.")}});
+    $("#logoutBtn").addEventListener("click",()=>signOut(auth));
+
+    async function loadSettings(){
+      try{const snap=await getDoc(doc(db,"settings","public")); if(snap.exists()) settings={...DEFAULT_SETTINGS,...snap.data()}; else await setDoc(doc(db,"settings","public"),DEFAULT_SETTINGS,{merge:true});}catch(e){console.error(e);toast("No se pudo cargar configuración")}
+      renderSettingsForm();
+    }
+    function renderSettingsForm(){
+      $("#sStoreName").value=settings.storeName||"Mercadimas"; $("#sSlogan").value=settings.slogan||""; $("#sWhatsapp").value=settings.whatsappNumber||""; $("#sIntro").value=settings.messageIntro||""; $("#sPayments").value=(settings.paymentMethods||[]).join("\n"); $("#sShipping").value=(settings.shippingOptions||[]).map(o=>`${o.id} | ${o.label} | ${o.cost||0} | ${o.eta||""}`).join("\n");
+    }
+    $("#settingsForm").addEventListener("submit",async(e)=>{e.preventDefault(); const shipping=$("#sShipping").value.split("\n").map(l=>l.trim()).filter(Boolean).map((line,i)=>{const [id,label,cost,eta]=line.split("|").map(x=>String(x||"").trim());return {id:id||`envio_${i+1}`,label:label||"Envío",cost:Number(cost||0)||0,eta:eta||""}}); const data={storeName:$("#sStoreName").value.trim()||"Mercadimas",slogan:$("#sSlogan").value.trim(),whatsappNumber:$("#sWhatsapp").value.replace(/[^\d]/g,""),messageIntro:$("#sIntro").value.trim(),paymentMethods:$("#sPayments").value.split("\n").map(x=>x.trim()).filter(Boolean),shippingOptions:shipping,updatedAt:serverTimestamp()}; await setDoc(doc(db,"settings","public"),data,{merge:true}); settings={...settings,...data}; toast("Configuración guardada");});
+
+    function listenProducts(){ if(unsubscribe) unsubscribe(); unsubscribe=onSnapshot(collection(db,"products"),(snap)=>{products=snap.docs.map(d=>({id:d.id,...d.data()})); renderInventory(); renderStats();},err=>{console.error(err);toast("No se pudo leer el inventario")}); }
+    function renderStats(){ const visible=products.filter(p=>p.active!==false).length; const units=products.reduce((s,p)=>s+stock(p),0); const low=products.filter(p=>stock(p)>0 && stock(p)<=Number(p.minStock||5)).length; $("#statTotal").textContent=products.length; $("#statVisible").textContent=visible; $("#statUnits").textContent=units; $("#statLow").textContent=low; }
+    function filteredInventory(){const q=$("#searchInventory").value.trim().toLowerCase();const cat=$("#filterCategory").value;return products.filter(p=>{const catOk=cat==="Todos"||p.category===cat;const text=`${p.name||""} ${p.code||""} ${p.category||""} ${p.brand||""}`.toLowerCase();return catOk&&(!q||text.includes(q));}).sort((a,b)=>String(a.name||"").localeCompare(String(b.name||""),"es"));}
+    function renderInventory(){const list=filteredInventory();$("#emptyInventory").classList.toggle("hidden",list.length>0);$("#productList").innerHTML=list.map((p,i)=>`<article class="productRow" style="animation-delay:${Math.min(i*20,220)}ms"><div class="thumb">${p.image?`<img src="${escapeAttr(p.image)}" alt="${escapeAttr(p.name)}">`:(ICONS[p.category]||"🛒")}</div><div><div class="rowName">${escapeHTML(p.name||"Producto")}</div><div class="rowMeta"><span class="pill">${escapeHTML(p.category||"Otros")}</span><span class="pill">${money(finalPrice(p))}</span><span class="pill">Stock: ${stock(p)}</span>${p.active===false?'<span class="pill">Oculto</span>':''}${Number(p.discountPercent||0)>0?`<span class="pill">-${p.discountPercent}%</span>`:''}</div></div><div class="rowActions"><button class="iconBtn" title="Editar" data-edit="${p.id}">✏️</button><button class="iconBtn ${p.active!==false?'active':''}" title="Mostrar/Ocultar" data-toggle="${p.id}">${p.active!==false?'👁️':'🙈'}</button><button class="iconBtn danger" title="Eliminar" data-delete="${p.id}">🗑️</button></div></article>`).join(""); $$('[data-edit]').forEach(b=>b.addEventListener('click',()=>editProduct(b.dataset.edit))); $$('[data-toggle]').forEach(b=>b.addEventListener('click',()=>toggleProduct(b.dataset.toggle))); $$('[data-delete]').forEach(b=>b.addEventListener('click',()=>deleteProduct(b.dataset.delete)));}
+    $("#searchInventory").addEventListener("input",renderInventory); $("#filterCategory").addEventListener("change",renderInventory);
+
+    function productData(){return {name:$("#pName").value.trim(),code:$("#pCode").value.trim(),category:$("#pCategory").value,brand:$("#pBrand").value.trim(),unit:$("#pUnit").value.trim()||"Unidad",price:Number($("#pPrice").value||0),discountPercent:Math.max(0,Math.min(90,Number($("#pDiscount").value||0))),stock:Math.max(0,Number($("#pStock").value||0)),minStock:Math.max(0,Number($("#pMinStock").value||5)),description:$("#pDesc").value.trim(),image:$("#pImage").value.trim(),active:$("#pActive").value==="true",featured:$("#pFeatured").value==="true",updatedAt:serverTimestamp()};}
+    $("#productForm").addEventListener("submit",async(e)=>{e.preventDefault(); const data=productData(); if(!data.name||!data.price){toast("Nombre y precio son obligatorios");return;} const id=$("#productId").value; if(id){await updateDoc(doc(db,"products",id),data);toast("Producto actualizado");} else {data.createdAt=serverTimestamp(); await addDoc(collection(db,"products"),data);toast("Producto creado");} resetForm();});
+    function editProduct(id){const p=products.find(x=>x.id===id); if(!p)return; $("#formTitle").textContent="Editar producto"; $("#productId").value=p.id; $("#pName").value=p.name||""; $("#pCode").value=p.code||""; $("#pCategory").value=p.category||"Otros"; $("#pBrand").value=p.brand||""; $("#pUnit").value=p.unit||"Unidad"; $("#pPrice").value=p.price||0; $("#pDiscount").value=p.discountPercent||0; $("#pStock").value=stock(p); $("#pMinStock").value=p.minStock??5; $("#pDesc").value=p.description||""; $("#pImage").value=p.image||""; $("#pActive").value=String(p.active!==false); $("#pFeatured").value=String(!!p.featured); renderPreview(); window.scrollTo({top:0,behavior:"smooth"});}
+    function resetForm(){ $("#formTitle").textContent="Nuevo producto"; $("#productForm").reset(); $("#productId").value=""; $("#pUnit").value="Unidad"; $("#pDiscount").value=0; $("#pStock").value=0; $("#pMinStock").value=5; $("#pActive").value="true"; $("#pFeatured").value="false"; renderPreview(); }
+    async function toggleProduct(id){const p=products.find(x=>x.id===id); if(!p)return; await updateDoc(doc(db,"products",id),{active:!(p.active!==false),updatedAt:serverTimestamp()}); toast("Visibilidad actualizada");}
+    async function deleteProduct(id){const p=products.find(x=>x.id===id); if(!p)return; if(!confirm(`¿Eliminar ${p.name}?`))return; await deleteDoc(doc(db,"products",id)); toast("Producto eliminado"); if($("#productId").value===id) resetForm();}
+    $("#newBtn").addEventListener("click",resetForm); $("#resetBtn").addEventListener("click",resetForm);
+    function renderPreview(){const src=$("#pImage").value.trim(); $("#imagePreview").innerHTML=src?`<img src="${escapeAttr(src)}" alt="Vista previa">`:"Vista previa de imagen";}
+    $("#pImage").addEventListener("input",renderPreview); $("#uploadBtn").addEventListener("click",()=>$("#imageFile").click()); $("#clearImage").addEventListener("click",()=>{$("#pImage").value="";renderPreview();});
+    $("#imageFile").addEventListener("change",async(e)=>{const file=e.target.files?.[0]; if(!file)return; if(file.size>650000){toast("Imagen muy pesada. Usa una imagen menor a 650KB o una URL."); e.target.value=""; return;} const reader=new FileReader(); reader.onload=()=>{$("#pImage").value=reader.result;renderPreview();}; reader.readAsDataURL(file);});
+
+    $$(".tab").forEach(t=>t.addEventListener("click",()=>{$$(".tab").forEach(x=>x.classList.remove("active"));t.classList.add("active");const tab=t.dataset.tab;$("#productsTab").classList.toggle("hidden",tab!=="products");$("#settingsTab").classList.toggle("hidden",tab!=="settings");}));
+
+    const samples=[
+      {name:"Arroz Diana 500g",code:"ABA-001",category:"Abarrotes",brand:"Diana",unit:"500g",price:3200,discountPercent:0,stock:30,minStock:6,description:"Arroz blanco ideal para el mercado diario.",active:true,featured:true},
+      {name:"Aceite vegetal 900ml",code:"ABA-002",category:"Abarrotes",brand:"Premier",unit:"900ml",price:9800,discountPercent:5,stock:18,minStock:5,description:"Aceite vegetal para preparaciones del hogar.",active:true,featured:true},
+      {name:"Leche entera 1L",code:"LAC-001",category:"Lácteos",brand:"Alquería",unit:"1 litro",price:4300,discountPercent:0,stock:24,minStock:8,description:"Leche entera larga vida.",active:true,featured:false},
+      {name:"Detergente en polvo 1kg",code:"ASE-001",category:"Aseo del hogar",brand:"Fab",unit:"1kg",price:14500,discountPercent:10,stock:12,minStock:4,description:"Detergente para ropa con aroma fresco.",active:true,featured:true},
+      {name:"Manzana roja",code:"FRU-001",category:"Frutas y verduras",brand:"Frescos",unit:"Libra",price:4800,discountPercent:0,stock:20,minStock:5,description:"Fruta fresca seleccionada para tu hogar.",active:true,featured:false},
+      {name:"Papel higiénico x4",code:"HOG-001",category:"Hogar",brand:"Familia",unit:"Paquete x4",price:12400,discountPercent:0,stock:16,minStock:5,description:"Papel higiénico suave para uso familiar.",active:true,featured:false}
+    ];
+    $("#seedBtn").addEventListener("click",async()=>{if(products.length && !confirm("Ya tienes productos. ¿Agregar productos ejemplo de Mercadimas?"))return; for(const p of samples){await addDoc(collection(db,"products"),{...p,createdAt:serverTimestamp(),updatedAt:serverTimestamp()});} toast("Productos ejemplo creados");});
+
+    fillSelects(); resetForm();
+  </script>
+</body>
+</html>
