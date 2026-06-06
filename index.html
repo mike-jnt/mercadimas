@@ -116,6 +116,30 @@
     .badge.low{background:rgba(255,138,42,.10);border-color:rgba(255,138,42,.25);color:#9a4b00}
     .imgPreview{width:100%;height:190px;border:1px dashed rgba(21,32,24,.18);border-radius:20px;background:#f8fbf3;display:grid;place-items:center;overflow:hidden;color:var(--muted);font-weight:800;text-align:center;padding:12px}
     .imgPreview img{width:100%;height:100%;object-fit:cover}
+    .modal{border:0;padding:0;width:min(1120px,calc(100vw - 28px));max-height:calc(100vh - 28px);border-radius:28px;box-shadow:0 34px 110px rgba(0,0,0,.32);overflow:hidden;background:#fff;animation:pop .22s ease both}
+    .modal::backdrop{background:rgba(16,26,19,.62);backdrop-filter:blur(8px)}
+    .modalHead{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:18px 20px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#fff,#fbfdf7)}
+    .modalHead h2{margin:0;font-size:24px;letter-spacing:-.04em;line-height:1.1}
+    .modalHead p{margin:5px 0 0;color:var(--muted);font-weight:600;font-size:13px}
+    .modalClose{width:42px;height:42px;border-radius:15px;border:1px solid var(--line);background:#fff;color:var(--text);font-weight:900;font-size:18px;display:grid;place-items:center}
+    .modalBody{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(340px,.92fr);gap:18px;padding:18px;overflow:auto;max-height:calc(100vh - 122px)}
+    .formColumn{display:grid;gap:14px;align-content:start}
+    .previewColumn{position:sticky;top:0;align-self:start;background:linear-gradient(180deg,#f8fbf3,#eef5e7);border:1px solid var(--line);border-radius:24px;padding:18px;box-shadow:inset 0 1px 0 rgba(255,255,255,.8)}
+    .previewTitle{font-size:12px;color:var(--muted);font-weight:900;text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px}
+    .previewCard{background:#fff;border:1px solid rgba(21,32,24,.10);border-radius:24px;box-shadow:0 18px 45px rgba(21,32,24,.12);overflow:hidden;animation:fadeUp .25s ease both}
+    .previewImg{height:230px;background:#f0f5e9;display:grid;place-items:center;color:var(--muted);font-weight:900;font-size:54px;position:relative;overflow:hidden}
+    .previewImg img{width:100%;height:100%;object-fit:cover;display:block}
+    .previewBadge{position:absolute;left:12px;top:12px;background:rgba(255,255,255,.92);border:1px solid rgba(21,32,24,.10);border-radius:999px;padding:7px 10px;font-size:11px;font-weight:900;color:var(--green2);box-shadow:0 10px 25px rgba(0,0,0,.10)}
+    .previewContent{padding:15px;display:grid;gap:8px}
+    .previewName{font-weight:900;font-size:18px;line-height:1.15;letter-spacing:-.03em}
+    .previewMeta{display:flex;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:12px;font-weight:700}
+    .previewDesc{font-size:13px;line-height:1.35;color:#4b5a4f;min-height:36px}
+    .previewFooter{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin-top:4px}
+    .previewPrice{font-size:20px;font-weight:900;letter-spacing:-.03em}
+    .previewOld{display:block;font-size:12px;color:#9ca3af;text-decoration:line-through;font-weight:700;margin-bottom:2px}
+    .previewStock{font-size:11px;font-weight:900;padding:7px 9px;border-radius:999px;background:rgba(34,164,71,.10);border:1px solid rgba(34,164,71,.22);color:var(--green2);white-space:nowrap}
+    .formHint{font-size:12px;color:var(--muted);font-weight:600;line-height:1.35;margin-top:-4px}
+    .modalActions{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:4px;padding-top:6px;border-top:1px dashed rgba(21,32,24,.14)}
     .empty{padding:24px;text-align:center;color:var(--muted);font-weight:800;background:#fff;border:1px dashed var(--line);border-radius:20px}
     .loginScreen{min-height:100vh;display:grid;place-items:center;padding:22px;background:radial-gradient(circle at 30% 20%,rgba(200,240,69,.28),transparent 30%),linear-gradient(135deg,#101a13,#1f3a26)}
     .loginCard{width:min(460px,100%);background:rgba(255,255,255,.96);border:1px solid rgba(255,255,255,.30);border-radius:30px;padding:28px;box-shadow:0 30px 90px rgba(0,0,0,.28);animation:pop .35s ease both}
@@ -123,8 +147,8 @@
     .loginCard h1{text-align:center;margin:0;font-size:30px;letter-spacing:-.05em}.loginCard p{text-align:center;color:var(--muted);margin:8px 0 20px;font-weight:600}
     .toast{position:fixed;left:50%;bottom:calc(20px + var(--safeB));transform:translateX(-50%) translateY(20px);background:#101a13;color:#fff;padding:12px 16px;border-radius:999px;box-shadow:0 20px 60px rgba(0,0,0,.24);font-weight:800;font-size:13px;z-index:1000;opacity:0;pointer-events:none;transition:.22s ease;max-width:calc(100vw - 24px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
     @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}@keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
-    @media(max-width:1060px){.appShell{grid-template-columns:1fr}aside{position:relative;height:auto;border-right:0}.stats{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}.stockEditor{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:620px){main{padding:14px}.topbar{align-items:flex-start;flex-direction:column}.stats{grid-template-columns:1fr}.grid3{grid-template-columns:1fr}.stockEditor{grid-template-columns:1fr}.panelHead{flex-direction:column}.actionsRow .btn{width:100%}.toolbar .input,.toolbar .select,.toolbar .btn{width:100%;max-width:none}}
+    @media(max-width:1060px){.appShell{grid-template-columns:1fr}aside{position:relative;height:auto;border-right:0}.stats{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}.stockEditor{grid-template-columns:repeat(2,1fr)}.modalBody{grid-template-columns:1fr}.previewColumn{position:relative}.previewImg{height:210px}}
+    @media(max-width:620px){main{padding:14px}.topbar{align-items:flex-start;flex-direction:column}.stats{grid-template-columns:1fr}.grid3{grid-template-columns:1fr}.stockEditor{grid-template-columns:1fr}.panelHead{flex-direction:column}.actionsRow .btn{width:100%}.toolbar .input,.toolbar .select,.toolbar .btn{width:100%;max-width:none}.modal{width:100vw;max-height:100vh;height:100vh;border-radius:0}.modalBody{max-height:calc(100vh - 104px);padding:14px}.modalHead{padding:14px}.previewCard{border-radius:20px}.previewImg{height:190px}.modalActions .btn{width:100%}}
   </style>
 </head>
 <body>
@@ -132,7 +156,7 @@
     <form class="loginCard" id="loginForm">
       <div class="loginLogo">🛒</div>
       <h1>Mercadimas</h1>
-      <p>Panel privado de inventario. Entra con un usuario creado en Firebase Authentication.</p>
+      <p>Ingresa con tu correo y contraseña para administrar el inventario.</p>
       <div class="field">
         <label for="loginEmail">Correo electrónico</label>
         <input class="input" id="loginEmail" type="email" autocomplete="email" required placeholder="admin@mercadimas.com" />
@@ -142,18 +166,15 @@
         <input class="input" id="loginPassword" type="password" autocomplete="current-password" required placeholder="••••••••" />
       </div>
       <button class="btn btnPrimary" style="width:100%;margin-top:18px" type="submit">Ingresar al panel</button>
-      <div class="version" style="color:#415044;background:#f2f7ea;border-color:#dfe9d7;text-align:center">Versión corregida: AUTH TODOS v4 — acceso por Authentication</div>
     </form>
   </section>
 
   <section class="appShell hidden" id="appShell">
     <aside>
       <div class="brandBox"><div class="logoMark">🛒</div><div><div class="brandTitle">Mercadimas</div><div class="brandSub">Inventario y catálogo</div></div></div>
-      <div class="version">AUTH TODOS v4 · Acceso por Firebase Authentication</div>
-      <div class="userCard"><div class="userEmail" id="userEmail">—</div><div class="userHint">Cualquier usuario existente en Firebase Authentication puede administrar.</div></div>
+      <div class="userCard"><div class="userEmail" id="userEmail">—</div></div>
       <button class="navBtn active" data-view="dashboard">📊 Inventario</button>
       <button class="navBtn" data-view="settings">⚙️ Configuración</button>
-      <button class="navBtn" data-view="help">🧩 Reglas Firebase</button>
       <button class="logoutBtn" id="logoutBtn">Cerrar sesión</button>
     </aside>
 
@@ -172,45 +193,22 @@
         </div>
 
         <div class="panel">
-          <div class="panelHead"><div><h2 id="formTitle">Nuevo producto</h2><p>Completa la información del producto que verá el cliente en el catálogo.</p></div><div class="actionsRow"><button class="btn btnGhost" id="resetFormBtn" type="button">Nuevo</button><button class="btn btnWarn" id="seedBtn" type="button">Crear ejemplos</button></div></div>
-          <div class="panelBody">
-            <form id="productForm">
-              <input type="hidden" id="productId" />
-              <div class="grid3">
-                <div class="field"><label>Nombre</label><input class="input" id="name" required placeholder="Ej: Arroz Diana 500g" /></div>
-                <div class="field"><label>Código / SKU</label><input class="input" id="code" placeholder="Ej: AB-001" /></div>
-                <div class="field"><label>Categoría</label><select class="select" id="category"></select></div>
-              </div>
-              <div class="grid3" style="margin-top:14px">
-                <div class="field"><label>Marca</label><input class="input" id="brand" placeholder="Ej: Familia, Diana, Colanta" /></div>
-                <div class="field"><label>Unidad</label><input class="input" id="unit" placeholder="Ej: Unidad, libra, paquete, botella" /></div>
-                <div class="field"><label>Imagen URL</label><input class="input" id="image" placeholder="https://..." /></div>
-              </div>
-              <div class="grid3" style="margin-top:14px">
-                <div class="field"><label>Precio</label><input class="input" id="price" type="number" min="0" step="100" required placeholder="0" /></div>
-                <div class="field"><label>Descuento %</label><input class="input" id="discountPercent" type="number" min="0" max="90" step="1" value="0" /></div>
-                <div class="field"><label>Stock mínimo alerta</label><input class="input" id="minStock" type="number" min="0" step="1" value="5" /></div>
-              </div>
-              <div class="grid2" style="margin-top:14px">
-                <div class="field"><label>Descripción</label><textarea class="textarea" id="description" placeholder="Describe el producto, presentación, sabor, tamaño o detalles importantes."></textarea></div>
-                <div class="field"><label>Vista previa imagen</label><div class="imgPreview" id="imagePreview">Sin imagen</div></div>
-              </div>
-              <div class="field" style="margin-top:14px">
-                <label>Stock por presentación / talla / unidad</label>
-                <div class="stockEditor" id="stockEditor"></div>
-              </div>
-              <div class="actionsRow" style="margin-top:18px;justify-content:space-between">
-                <label style="display:flex;align-items:center;gap:9px;font-weight:800;color:var(--muted)"><input type="checkbox" id="active" checked /> Visible en catálogo</label>
-                <div class="actionsRow"><button class="btn btnGhost" type="button" id="clearBtn">Limpiar</button><button class="btn btnPrimary" type="submit">Guardar producto</button></div>
-              </div>
-            </form>
+          <div class="panelHead">
+            <div>
+              <h2>Inventario de productos</h2>
+              <p>Agrega productos desde el modal y administra la lista con acciones rápidas.</p>
+            </div>
+            <div class="actionsRow">
+              <button class="btn btnPrimary" id="openProductModalBtn" type="button">+ Agregar producto</button>
+              <button class="btn btnWarn" id="seedBtn" type="button">Crear ejemplos</button>
+            </div>
           </div>
-        </div>
-
-        <div class="panel">
-          <div class="panelHead"><div><h2>Productos registrados</h2><p>Consulta, edita, oculta o elimina productos del supermercado.</p></div></div>
           <div class="panelBody">
-            <div class="toolbar"><input class="input" id="search" placeholder="Buscar por nombre, código, categoría o marca..." /><select class="select" id="filterCat" style="max-width:260px"></select><button class="btn btnGhost" id="refreshBtn">Actualizar</button></div>
+            <div class="toolbar">
+              <input class="input" id="search" placeholder="Buscar por nombre, código, categoría o marca..." />
+              <select class="select" id="filterCat" style="max-width:260px"></select>
+              <button class="btn btnGhost" id="refreshBtn" type="button">Actualizar</button>
+            </div>
             <div class="tableWrap"><table><thead><tr><th>Producto</th><th>Categoría</th><th>Precio</th><th>Stock</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="productsBody"></tbody></table></div>
             <div class="empty hidden" id="emptyTable">No hay productos para mostrar.</div>
           </div>
@@ -228,28 +226,62 @@
         </div></div>
       </section>
 
-      <section id="helpView" class="hidden">
-        <div class="panel"><div class="panelHead"><div><h2>Reglas correctas de Firestore</h2><p>Publica estas reglas para permitir escritura a cualquier usuario autenticado.</p></div></div><div class="panelBody"><pre style="white-space:pre-wrap;background:#101a13;color:#dff6dc;border-radius:20px;padding:18px;overflow:auto;font-size:13px;line-height:1.55">rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    function signedIn() {
-      return request.auth != null;
-    }
-
-    match /products/{productId} {
-      allow read: if true;
-      allow create, update, delete: if signedIn();
-    }
-
-    match /settings/{docId} {
-      allow read: if docId == "public";
-      allow create, update, delete: if docId == "public" && signedIn();
-    }
-  }
-}</pre></div></div>
-      </section>
     </main>
   </section>
+
+  <dialog class="modal" id="productModal">
+    <div class="modalHead">
+      <div>
+        <h2 id="formTitle">Nuevo producto</h2>
+        <p>Completa los datos a la izquierda y revisa en vivo cómo se verá la tarjeta del catálogo.</p>
+      </div>
+      <button class="modalClose" id="closeProductModal" type="button" aria-label="Cerrar">×</button>
+    </div>
+    <div class="modalBody">
+      <form id="productForm" class="formColumn">
+        <input type="hidden" id="productId" />
+        <div class="grid2">
+          <div class="field"><label>Nombre del producto</label><input class="input" id="name" required placeholder="Ej: Arroz Diana 500g" /></div>
+          <div class="field"><label>Código / SKU</label><input class="input" id="code" placeholder="Ej: AB-001" /></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label>Categoría</label><select class="select" id="category"></select></div>
+          <div class="field"><label>Marca</label><input class="input" id="brand" placeholder="Ej: Familia, Diana, Colanta" /></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label>Unidad de venta</label><input class="input" id="unit" placeholder="Ej: Unidad, libra, paquete, botella" /></div>
+          <div class="field"><label>Imagen URL</label><input class="input" id="image" placeholder="https://..." /></div>
+        </div>
+        <div class="grid3">
+          <div class="field"><label>Precio</label><input class="input" id="price" type="number" min="0" step="100" required placeholder="0" /></div>
+          <div class="field"><label>Descuento %</label><input class="input" id="discountPercent" type="number" min="0" max="90" step="1" value="0" /></div>
+          <div class="field"><label>Stock mínimo alerta</label><input class="input" id="minStock" type="number" min="0" step="1" value="5" /></div>
+        </div>
+        <div class="field">
+          <label>Descripción</label>
+          <textarea class="textarea" id="description" placeholder="Describe el producto, presentación, sabor, tamaño o detalles importantes."></textarea>
+        </div>
+        <div class="field">
+          <label>Stock por presentación / unidad</label>
+          <div class="stockEditor" id="stockEditor"></div>
+          <div class="formHint">Escribe cantidades solo en las presentaciones que aplican. El total se calcula automáticamente.</div>
+        </div>
+        <div class="modalActions">
+          <label style="display:flex;align-items:center;gap:9px;font-weight:800;color:var(--muted)"><input type="checkbox" id="active" checked /> Visible en catálogo</label>
+          <div class="actionsRow">
+            <button class="btn btnGhost" type="button" id="clearBtn">Limpiar</button>
+            <button class="btn btnGhost" type="button" id="cancelProductBtn">Cancelar</button>
+            <button class="btn btnPrimary" type="submit">Guardar producto</button>
+          </div>
+        </div>
+      </form>
+
+      <aside class="previewColumn">
+        <div class="previewTitle">Vista previa en el catálogo</div>
+        <div class="previewCard" id="livePreviewCard"></div>
+      </aside>
+    </div>
+  </dialog>
 
   <div class="toast" id="toast"></div>
 
@@ -268,7 +300,6 @@ service cloud.firestore {
     };
 
     const app = initializeApp(firebaseConfig);
-    // IMPORTANTE: esta versión no valida roles ni UID adicionales; si el usuario inicia sesión en Authentication, entra.
     const auth = getAuth(app);
     const db = getFirestore(app);
 
@@ -303,8 +334,36 @@ service cloud.firestore {
     }
 
     function imgPreview(){
-      const src=$("#image").value.trim();
-      $("#imagePreview").innerHTML=src?`<img src="${escapeHTML(src)}" alt="Vista previa" onerror="this.parentElement.textContent='No se pudo cargar la imagen'">`:"Sin imagen";
+      updateLivePreview();
+    }
+
+    function updateLivePreview(){
+      const category=$("#category")?.value || "Abarrotes";
+      const name=$("#name")?.value.trim() || "Nombre del producto";
+      const code=$("#code")?.value.trim() || "Sin código";
+      const brand=$("#brand")?.value.trim() || "Mercadimas";
+      const unit=$("#unit")?.value.trim() || "Unidad";
+      const desc=$("#description")?.value.trim() || "Descripción breve del producto para que el cliente entienda qué está comprando.";
+      const image=$("#image")?.value.trim() || "";
+      const base=Math.max(0,Number($("#price")?.value||0)||0);
+      const pct=Math.max(0,Math.min(90,Number($("#discountPercent")?.value||0)||0));
+      const final=pct>0?Math.round(base*(100-pct)/100):base;
+      let stock=0;
+      $$('[data-stock]').forEach(i=> stock += Math.max(0,Number(i.value||0)||0));
+      const icon=ICONS[category] || "🛒";
+      const img=image ? `<img src="${escapeHTML(image)}" alt="${escapeHTML(name)}" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','<span>${icon}</span>')">` : `<span>${icon}</span>`;
+      const old=pct>0 && base>0 ? `<span class="previewOld">${money(base)}</span>` : "";
+      $("#livePreviewCard").innerHTML=`
+        <div class="previewImg">${img}<span class="previewBadge">${escapeHTML(category)}</span></div>
+        <div class="previewContent">
+          <div class="previewName">${escapeHTML(name)}</div>
+          <div class="previewMeta"><span>${escapeHTML(brand)}</span><span>·</span><span>${escapeHTML(code)}</span><span>·</span><span>${escapeHTML(unit)}</span></div>
+          <div class="previewDesc">${escapeHTML(desc)}</div>
+          <div class="previewFooter">
+            <div class="previewPrice">${old}${base>0?money(final):"$ 0"}</div>
+            <div class="previewStock">${stock} disponibles</div>
+          </div>
+        </div>`;
     }
 
     function formData(){
@@ -330,14 +389,38 @@ service cloud.firestore {
       };
     }
 
+    function openProductModal(){
+      const modal=$("#productModal");
+      updateLivePreview();
+      if(typeof modal.showModal === "function") modal.showModal();
+      else modal.setAttribute("open","");
+    }
+
+    function closeProductModal(){
+      const modal=$("#productModal");
+      if(modal.open) modal.close();
+      else modal.removeAttribute("open");
+    }
+
     function fillForm(p){
       $("#productId").value=p.id||""; $("#formTitle").textContent=p.id?"Editar producto":"Nuevo producto";
       $("#name").value=p.name||""; $("#code").value=p.code||""; $("#category").value=p.category||"Otros"; $("#brand").value=p.brand||""; $("#unit").value=p.unit||"Unidad"; $("#image").value=p.image||""; $("#price").value=p.price||0; $("#discountPercent").value=p.discountPercent||0; $("#minStock").value=p.minStock??5; $("#description").value=p.description||""; $("#active").checked=p.active!==false;
       $$('[data-stock]').forEach(i=>{ i.value=(p.stockBySize&&p.stockBySize[i.dataset.stock])||0; });
-      imgPreview(); window.scrollTo({top:0,behavior:"smooth"});
+      updateLivePreview(); openProductModal();
     }
 
-    function resetForm(){ $("#productForm").reset(); $("#productId").value=""; $("#formTitle").textContent="Nuevo producto"; $("#category").value="Abarrotes"; $("#unit").value="Unidad"; $("#discountPercent").value=0; $("#minStock").value=5; $("#active").checked=true; $$('[data-stock]').forEach(i=>i.value=0); imgPreview(); }
+    function resetForm(){
+      $("#productForm").reset();
+      $("#productId").value="";
+      $("#formTitle").textContent="Nuevo producto";
+      $("#category").value="Abarrotes";
+      $("#unit").value="Unidad";
+      $("#discountPercent").value=0;
+      $("#minStock").value=5;
+      $("#active").checked=true;
+      $$('[data-stock]').forEach(i=>i.value=0);
+      updateLivePreview();
+    }
 
     async function saveProduct(e){
       e.preventDefault();
@@ -349,8 +432,8 @@ service cloud.firestore {
         status("Guardando…");
         if(id) await updateDoc(doc(db,"products",id),data);
         else await addDoc(collection(db,"products"),{...data,createdAt:serverTimestamp()});
-        toast("Producto guardado"); resetForm(); status("Conectado","ok");
-      }catch(err){ console.error(err); status("Error de permisos","err"); toast("No se pudo guardar. Revisa reglas de Firestore."); }
+        toast("Producto guardado"); resetForm(); closeProductModal(); status("Conectado","ok");
+      }catch(err){ console.error(err); status("Error de permisos","err"); toast("No se pudo guardar. Verifica los permisos de acceso."); }
     }
 
     function filtered(){
@@ -372,11 +455,10 @@ service cloud.firestore {
           <td>${p.discountPercent?`<span style="color:#9ca3af;text-decoration:line-through">${money(p.price)}</span><br>`:""}<b>${money(finalPrice(p))}</b></td>
           <td><span class="badge ${low?'low':''}">${stock} unidades</span></td>
           <td><span class="badge ${p.active!==false?'on':'off'}">${p.active!==false?'Visible':'Oculto'}</span></td>
-          <td><div class="actionsRow"><button class="btn btnGhost btnTiny" data-edit="${p.id}">Editar</button><button class="btn btnWarn btnTiny" data-toggle="${p.id}">${p.active!==false?'Ocultar':'Mostrar'}</button><button class="btn btnDanger btnTiny" data-delete="${p.id}">Eliminar</button></div></td>
+          <td><div class="actionsRow"><button class="btn btnGhost btnTiny" data-edit="${p.id}">Editar</button><button class="btn btnDanger btnTiny" data-delete="${p.id}">Eliminar</button></div></td>
         </tr>`;
       }).join("");
       $$('[data-edit]').forEach(b=>b.addEventListener('click',()=>{ const p=products.find(x=>x.id===b.dataset.edit); if(p) fillForm(p); }));
-      $$('[data-toggle]').forEach(b=>b.addEventListener('click',()=>toggleProduct(b.dataset.toggle)));
       $$('[data-delete]').forEach(b=>b.addEventListener('click',()=>deleteProduct(b.dataset.delete)));
       renderStats();
     }
@@ -430,13 +512,13 @@ service cloud.firestore {
     function listenProducts(){
       if(unsubscribeProducts) unsubscribeProducts();
       status("Conectando…");
-      unsubscribeProducts=onSnapshot(collection(db,"products"),(snap)=>{ products=snap.docs.map(d=>({id:d.id,...d.data()})); status("Conectado","ok"); renderProducts(); },(err)=>{ console.error(err); status("Sin permisos","err"); toast("Error: publica las reglas para usuarios autenticados"); });
+      unsubscribeProducts=onSnapshot(collection(db,"products"),(snap)=>{ products=snap.docs.map(d=>({id:d.id,...d.data()})); status("Conectado","ok"); renderProducts(); },(err)=>{ console.error(err); status("Sin permisos","err"); toast("No se pudo conectar. Verifica los permisos de acceso."); });
     }
 
     function showView(view){
-      ["dashboard","settings","help"].forEach(v=>$("#"+v+"View").classList.toggle("hidden",v!==view));
+      ["dashboard","settings"].forEach(v=>$("#"+v+"View").classList.toggle("hidden",v!==view));
       $$('.navBtn').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
-      $("#pageHeading").textContent=view==="dashboard"?"Inventario":view==="settings"?"Configuración":"Reglas Firebase";
+      $("#pageHeading").textContent=view==="dashboard"?"Inventario":"Configuración";
     }
 
     $("#loginForm").addEventListener("submit",async(e)=>{
@@ -445,7 +527,20 @@ service cloud.firestore {
       catch(err){ console.error(err); toast("Correo o contraseña incorrectos"); }
     });
     $("#logoutBtn").addEventListener("click",()=>signOut(auth));
-    $("#productForm").addEventListener("submit",saveProduct); $("#clearBtn").addEventListener("click",resetForm); $("#resetFormBtn").addEventListener("click",resetForm); $("#image").addEventListener("input",imgPreview); $("#search").addEventListener("input",renderProducts); $("#filterCat").addEventListener("change",renderProducts); $("#refreshBtn").addEventListener("click",renderProducts); $("#settingsForm").addEventListener("submit",saveSettings); $("#seedBtn").addEventListener("click",seedProducts); $$('.navBtn').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
+    $("#openProductModalBtn").addEventListener("click",()=>{ resetForm(); openProductModal(); });
+    $("#closeProductModal").addEventListener("click",closeProductModal);
+    $("#cancelProductBtn").addEventListener("click",closeProductModal);
+    $("#productModal").addEventListener("click",(e)=>{ if(e.target.id==="productModal") closeProductModal(); });
+    $("#productForm").addEventListener("submit",saveProduct);
+    $("#clearBtn").addEventListener("click",resetForm);
+    $("#productForm").addEventListener("input",updateLivePreview);
+    $("#productForm").addEventListener("change",updateLivePreview);
+    $("#search").addEventListener("input",renderProducts);
+    $("#filterCat").addEventListener("change",renderProducts);
+    $("#refreshBtn").addEventListener("click",renderProducts);
+    $("#settingsForm").addEventListener("submit",saveSettings);
+    $("#seedBtn").addEventListener("click",seedProducts);
+    $$('.navBtn').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
 
     initSelectors(); resetForm();
 
