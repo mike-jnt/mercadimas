@@ -160,12 +160,21 @@
     @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}@keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
     @media(max-width:1060px){.appShell{grid-template-columns:1fr}aside{position:relative;height:auto;border-right:0}.stats{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}.stockEditor{grid-template-columns:repeat(2,1fr)}.modalBody{grid-template-columns:1fr}.previewColumn{position:relative}.previewImg{height:210px}}
     @media(max-width:620px){main{padding:14px}.topbar{align-items:flex-start;flex-direction:column}.stats{grid-template-columns:1fr}.grid3{grid-template-columns:1fr}.stockEditor{grid-template-columns:1fr}.panelHead{flex-direction:column}.actionsRow .btn{width:100%}.toolbar .input,.toolbar .select,.toolbar .btn{width:100%;max-width:none}.modal{width:100vw;max-height:100vh;height:100vh;border-radius:0}.modalBody{max-height:calc(100vh - 104px);padding:14px}.modalHead{padding:14px}.previewCard{border-radius:20px}.previewImg{height:190px}.modalActions .btn{width:100%}}
+  
+
+    /* === Estilo empresarial: iconografía sobria y sin animaciones llamativas === */
+    *, *::before, *::after{animation:none !important; transition:none !important;}
+    .btn:hover, tbody tr:hover{transform:none !important;}
+    .loginLogo,.logoMark{background:#ffffff !important;color:#137c3a !important;border:1px solid rgba(19,124,58,.20) !important;box-shadow:none !important;font-size:24px !important;font-weight:950 !important;}
+    .navBtn{gap:10px;}
+    .thumb span,.previewImage span{font-size:11px !important;letter-spacing:.08em;text-transform:uppercase;color:#5f7465;font-weight:900;text-align:center;padding:8px;}
+
   </style>
 </head>
 <body>
   <section class="loginScreen" id="loginScreen">
     <form class="loginCard" id="loginForm">
-      <div class="loginLogo">🛒</div>
+      <div class="loginLogo">M</div>
       <h1>Mercadimas</h1>
       <p>Ingresa con tu correo y contraseña para administrar el inventario.</p>
       <div class="field">
@@ -182,10 +191,10 @@
 
   <section class="appShell hidden" id="appShell">
     <aside>
-      <div class="brandBox"><div class="logoMark">🛒</div><div><div class="brandTitle">Mercadimas</div><div class="brandSub">Inventario y catálogo</div></div></div>
+      <div class="brandBox"><div class="logoMark">M</div><div><div class="brandTitle">Mercadimas</div><div class="brandSub">Inventario y catálogo</div></div></div>
       <div class="userCard"><div class="userEmail" id="userEmail">—</div></div>
-      <button class="navBtn active" data-view="dashboard">📊 Inventario</button>
-      <button class="navBtn" data-view="settings">⚙️ Configuración</button>
+      <button class="navBtn active" data-view="dashboard">Inventario</button>
+      <button class="navBtn" data-view="settings">Configuración</button>
       <button class="logoutBtn" id="logoutBtn">Cerrar sesión</button>
     </aside>
 
@@ -336,12 +345,12 @@
 
     const CATEGORIES = ["Abarrotes","Frutas y verduras","Lácteos","Carnes y congelados","Bebidas","Aseo del hogar","Cuidado personal","Mascotas","Bebés","Panadería","Droguería","Hogar","Otros"];
     const STOCK_LABELS = ["Unidad","Paquete","Libra","Caja","Botella","Bolsa","Docena","Litro"];
-    const ICONS = {"Abarrotes":"🥫","Frutas y verduras":"🥦","Lácteos":"🥛","Carnes y congelados":"🥩","Bebidas":"🥤","Aseo del hogar":"🧽","Cuidado personal":"🧴","Mascotas":"🐾","Bebés":"🍼","Panadería":"🥖","Droguería":"💊","Hogar":"🏠","Otros":"🛒"};
+    const ICONS = {};
     const DEFAULT_SETTINGS = {
       storeName:"Mercadimas",
       slogan:"Mercado, hogar y ahorro en un solo lugar",
       whatsappNumber:"573215416766",
-      messageIntro:"Hola 👋 Quiero hacer un pedido en {{store}}:",
+      messageIntro:"Hola, quiero hacer un pedido en {{store}}:",
       paymentMethods:["Nequi","Daviplata","Transferencia bancaria","Efectivo","Contraentrega"],
       shippingOptions:[{id:"local",label:"Envío local",cost:5000,eta:"Hoy"},{id:"zona2",label:"Zona cercana",cost:8000,eta:"24–48h"},{id:"pickup",label:"Recoger en tienda",cost:0,eta:"Hoy"}]
     };
@@ -360,7 +369,7 @@
     function finalPrice(p){ const base=Number(p.price||0); const pct=Math.max(0,Math.min(90,Number(p.discountPercent||0)||0)); return pct>0?Math.round(base*(100-pct)/100):base; }
 
     function initSelectors(){
-      $("#category").innerHTML=CATEGORIES.map(c=>`<option value="${escapeHTML(c)}">${ICONS[c]||"🏷️"} ${escapeHTML(c)}</option>`).join("");
+      $("#category").innerHTML=CATEGORIES.map(c=>`<option value="${escapeHTML(c)}">${escapeHTML(c)}</option>`).join("");
       $("#filterCat").innerHTML=`<option value="Todos">Todas las categorías</option>`+CATEGORIES.map(c=>`<option value="${escapeHTML(c)}">${escapeHTML(c)}</option>`).join("");
       $("#stockEditor").innerHTML=STOCK_LABELS.map(l=>`<div class="stockPill"><span>${escapeHTML(l)}</span><input type="number" min="0" step="1" value="0" data-stock="${escapeHTML(l)}"></div>`).join("");
     }
@@ -463,7 +472,7 @@
       const final=pct>0?Math.round(base*(100-pct)/100):base;
       let stock=0;
       $$('[data-stock]').forEach(i=> stock += Math.max(0,Number(i.value||0)||0));
-      const icon=ICONS[category] || "🛒";
+      const icon="SIN IMAGEN";
       const img=image ? `<img src="${escapeHTML(image)}" alt="${escapeHTML(name)}" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','<span>${icon}</span>')">` : `<span>${icon}</span>`;
       const old=pct>0 && base>0 ? `<span class="previewOld">${money(base)}</span>` : "";
       $("#livePreviewCard").innerHTML=`
@@ -581,7 +590,7 @@
       const list=filtered();
       $("#emptyTable").classList.toggle("hidden",list.length>0);
       $("#productsBody").innerHTML=list.map(p=>{
-        const stock=totalStock(p); const low=stock<=Number(p.minStock||5); const img=p.image?`<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}">`:`<span>${ICONS[p.category]||"🛒"}</span>`;
+        const stock=totalStock(p); const low=stock<=Number(p.minStock||5); const img=p.image?`<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}">`:`<span>SIN IMAGEN</span>`;
         return `<tr>
           <td><div class="prodCell"><div class="thumb">${img}</div><div><div class="prodName">${escapeHTML(p.name||"Producto")}</div><div class="prodCode">${escapeHTML(p.code||"Sin código")} · ${escapeHTML(p.brand||"Mercadimas")}</div></div></div></td>
           <td>${escapeHTML(p.category||"Otros")}</td>
