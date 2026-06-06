@@ -2,164 +2,462 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Admin | Mercadimas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Mercadimas | Panel de Inventario</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    :root{--green:#137c3a;--green-2:#0f5f2e;--lime:#e9f9d8;--yellow:#ffd23f;--orange:#ff8f1f;--red:#dc2626;--bg:#f6f8f3;--paper:#fff;--paper-2:#fbfff7;--ink:#122016;--muted:#68766d;--line:rgba(18,32,22,.10);--shadow:0 22px 60px rgba(14,82,43,.13);--soft:0 12px 32px rgba(18,32,22,.08);--radius:24px;--container:1280px}
-    *{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}body{margin:0;min-height:100vh;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:radial-gradient(circle at 8% 6%,rgba(255,210,63,.28),transparent 30%),radial-gradient(circle at 92% 12%,rgba(19,124,58,.18),transparent 30%),linear-gradient(180deg,#fbfff8 0%,var(--bg) 56%,#f2f6ee 100%)}button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity:.52;cursor:not-allowed}img{max-width:100%;display:block}.hidden{display:none!important}.container{max-width:var(--container);margin:0 auto;padding:0 18px}.btn{border:0;border-radius:15px;min-height:44px;padding:11px 15px;font-weight:850;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .18s ease,filter .18s ease}.btn:hover{transform:translateY(-2px);filter:brightness(1.02)}.btnGreen{background:var(--green);color:white}.btnDark{background:#111827;color:white}.btnGhost{background:white;color:var(--ink);border:1px solid var(--line)}.btnYellow{background:var(--yellow);color:#17220f}.btnDanger{background:rgba(220,38,38,.10);color:#991b1b;border:1px solid rgba(220,38,38,.22)}
-    .loginPage{min-height:100vh;display:grid;place-items:center;padding:24px}.loginCard{width:min(440px,100%);background:rgba(255,255,255,.84);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:32px;padding:28px;backdrop-filter:blur(18px);animation:rise .35s ease both}.logo{width:64px;height:64px;border-radius:22px;background:linear-gradient(135deg,var(--green),#19a858);display:grid;place-items:center;color:white;font-size:31px;box-shadow:0 16px 34px rgba(19,124,58,.24);margin-bottom:16px}.loginCard h1{font-size:32px;line-height:1;letter-spacing:-.06em;margin:0 0 9px}.loginCard p{margin:0 0 20px;color:var(--muted);font-weight:650;line-height:1.5}.field{display:grid;gap:7px}.field label,.label{font-size:12px;color:var(--muted);font-weight:900}.input,textarea,select{width:100%;min-height:45px;border:1px solid var(--line);border-radius:15px;background:white;color:var(--ink);outline:none;padding:0 12px;font-weight:720}.input:focus,textarea:focus,select:focus{border-color:rgba(19,124,58,.45);box-shadow:0 0 0 4px rgba(19,124,58,.08)}textarea{padding:12px;resize:vertical}.formGrid{display:grid;gap:12px}.loginError{margin-top:12px;color:#991b1b;font-weight:800;font-size:13px}.topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:blur(18px) saturate(160%);border-bottom:1px solid var(--line)}.topbarInner{height:74px;display:flex;justify-content:space-between;align-items:center;gap:14px}.brand{display:flex;align-items:center;gap:12px}.brandLogo{width:46px;height:46px;border-radius:16px;background:linear-gradient(135deg,var(--green),#19a858);display:grid;place-items:center;color:white;font-size:24px;box-shadow:0 14px 30px rgba(19,124,58,.23)}.brandTitle{font-size:22px;font-weight:950;letter-spacing:-.05em}.brandSub{font-size:12px;color:var(--muted);font-weight:750;margin-top:2px}.userBox{display:flex;gap:10px;align-items:center}.userEmail{font-size:13px;color:var(--muted);font-weight:800;max-width:240px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.hero{padding:24px 0 8px}.heroPanel{background:linear-gradient(135deg,#0f5f2e,#158348 60%,#1aaa5b);color:white;border-radius:32px;padding:28px;box-shadow:var(--shadow);display:flex;justify-content:space-between;gap:20px;align-items:end;overflow:hidden;position:relative}.heroPanel::after{content:"";position:absolute;right:-70px;top:-90px;width:240px;height:240px;border-radius:999px;background:rgba(255,210,63,.28)}.heroPanel h1{position:relative;margin:0;font-size:clamp(30px,4vw,50px);letter-spacing:-.06em;line-height:.95}.heroPanel p{position:relative;margin:10px 0 0;color:rgba(255,255,255,.82);font-weight:650}.stats{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.stat{background:white;border:1px solid var(--line);border-radius:24px;padding:18px;box-shadow:var(--soft)}.stat b{font-size:31px;letter-spacing:-.04em}.stat span{display:block;color:var(--muted);font-size:13px;font-weight:800;margin-top:4px}.layout{display:grid;grid-template-columns:390px 1fr;gap:18px;padding-bottom:50px}.panel{background:rgba(255,255,255,.84);border:1px solid var(--line);border-radius:26px;box-shadow:var(--soft);backdrop-filter:blur(18px);overflow:hidden}.panelHead{padding:17px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px}.panelHead h2{margin:0;font-size:18px;letter-spacing:-.03em}.panelBody{padding:18px}.tabs{display:flex;gap:8px;flex-wrap:wrap}.tab{border:1px solid var(--line);background:white;border-radius:999px;padding:9px 13px;font-weight:900;color:#35523d}.tab.active{background:var(--green);color:white;border-color:transparent}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}.actions{display:flex;gap:10px;flex-wrap:wrap}.productList{display:grid;gap:10px}.productRow{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;background:white;border:1px solid var(--line);border-radius:22px;padding:12px;animation:rise .28s ease both;transition:transform .18s ease,box-shadow .18s ease}.productRow:hover{transform:translateY(-2px);box-shadow:var(--soft)}@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}.thumb{width:64px;height:64px;border-radius:18px;background:linear-gradient(135deg,#edf8e6,#fff7cf);display:grid;place-items:center;overflow:hidden;font-size:29px}.thumb img{width:100%;height:100%;object-fit:cover}.rowName{font-weight:950;letter-spacing:-.025em;line-height:1.15}.rowMeta{color:var(--muted);font-size:12px;font-weight:760;margin-top:5px;display:flex;gap:7px;flex-wrap:wrap}.pill{background:#f1f8ee;border:1px solid rgba(19,124,58,.12);padding:5px 8px;border-radius:999px}.rowActions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}.iconBtn{width:38px;height:38px;border-radius:13px;border:1px solid var(--line);background:#fff;font-weight:900}.iconBtn.active{background:#e9f9d8;color:var(--green);border-color:rgba(19,124,58,.22)}.iconBtn.danger{background:rgba(220,38,38,.10);color:#991b1b;border-color:rgba(220,38,38,.18)}.toolbar{display:grid;grid-template-columns:1fr 180px;gap:10px;margin-bottom:12px}.preview{height:160px;border:1px dashed rgba(19,124,58,.25);border-radius:22px;background:#fbfff7;display:grid;place-items:center;overflow:hidden;color:var(--muted);font-weight:850}.preview img{width:100%;height:100%;object-fit:cover}.notice{background:#fff8d6;border:1px solid rgba(255,210,63,.45);border-radius:18px;padding:12px;color:#6b5300;font-weight:750;font-size:13px;line-height:1.45}.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(10px);z-index:100;background:#111827;color:white;border-radius:999px;padding:11px 15px;opacity:0;pointer-events:none;font-weight:850;box-shadow:0 20px 60px rgba(0,0,0,.18);max-width:calc(100vw - 24px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:.2s}.toast.show{opacity:1;transform:translateX(-50%)}.settingsGrid{display:grid;gap:12px}.help{font-size:12px;color:var(--muted);font-weight:700;line-height:1.45;margin-top:5px}.hiddenFile{display:none}
-    @media (max-width:1040px){.layout{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}@media (max-width:720px){.topbarInner{height:auto;padding:12px 0;align-items:flex-start}.userBox{flex-wrap:wrap;justify-content:flex-end}.heroPanel{display:block}.stats{grid-template-columns:1fr 1fr}.productRow{grid-template-columns:56px 1fr}.rowActions{grid-column:1/-1;justify-content:flex-start}.toolbar,.two,.three{grid-template-columns:1fr}.brandSub,.userEmail{display:none}}@media (max-width:430px){.container{padding:0 12px}.stats{grid-template-columns:1fr}.loginCard{padding:22px;border-radius:26px}.panel{border-radius:22px}}
+    :root{
+      --bg:#f6f8f2;
+      --panel:#ffffff;
+      --panel2:#f9fbf5;
+      --text:#152018;
+      --muted:#667368;
+      --line:rgba(21,32,24,.12);
+      --green:#22a447;
+      --green2:#0f7d33;
+      --lime:#c8f045;
+      --yellow:#ffc83d;
+      --orange:#ff8a2a;
+      --red:#ef4444;
+      --shadow:0 24px 80px rgba(21,32,24,.12);
+      --shadow2:0 12px 35px rgba(21,32,24,.10);
+      --radius:24px;
+      --safeB:env(safe-area-inset-bottom,0px);
+      --safeT:env(safe-area-inset-top,0px);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(200,240,69,.25), transparent 34%),
+        radial-gradient(circle at 90% 10%, rgba(34,164,71,.16), transparent 28%),
+        linear-gradient(180deg,#f8faef 0%, #f3f6ec 45%, #eef3e8 100%);
+    }
+    button,input,select,textarea{font-family:inherit}
+    button{cursor:pointer}
+    .hidden{display:none!important}
+    .appShell{min-height:100vh;display:grid;grid-template-columns:310px 1fr;}
+    aside{
+      position:sticky;top:0;height:100vh;padding:calc(22px + var(--safeT)) 18px 22px;
+      background:#101a13;color:#fff;border-right:1px solid rgba(255,255,255,.08);
+      overflow:auto;
+    }
+    .brandBox{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
+    .logoMark{width:48px;height:48px;border-radius:18px;background:linear-gradient(135deg,var(--lime),var(--green));display:grid;place-items:center;font-size:25px;box-shadow:0 16px 40px rgba(0,0,0,.25)}
+    .brandTitle{font-weight:900;font-size:22px;letter-spacing:-.04em;line-height:1}
+    .brandSub{font-size:12px;color:rgba(255,255,255,.68);margin-top:4px}
+    .version{margin:10px 0 18px;padding:8px 10px;border-radius:999px;background:rgba(200,240,69,.11);border:1px solid rgba(200,240,69,.22);font-size:11px;color:rgba(255,255,255,.82)}
+    .userCard{padding:14px;border-radius:20px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.10);margin-bottom:16px;}
+    .userEmail{font-size:13px;word-break:break-all;color:#fff}
+    .userHint{font-size:11px;color:rgba(255,255,255,.62);margin-top:5px;line-height:1.35}
+    .navBtn{width:100%;border:0;background:transparent;color:rgba(255,255,255,.76);display:flex;align-items:center;gap:10px;padding:12px 13px;border-radius:16px;font-weight:700;text-align:left;margin:4px 0;}
+    .navBtn:hover,.navBtn.active{background:rgba(255,255,255,.10);color:#fff}
+    .logoutBtn{margin-top:18px;width:100%;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);color:#fff;border-radius:16px;padding:12px;font-weight:800}
+    main{padding:24px;min-width:0;}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:20px;}
+    .pageTitle h1{margin:0;font-size:clamp(24px,3vw,40px);letter-spacing:-.05em;line-height:1}
+    .pageTitle p{margin:8px 0 0;color:var(--muted);font-weight:600}
+    .statusPill{display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 13px;box-shadow:var(--shadow2);font-size:13px;font-weight:800;white-space:nowrap}
+    .statusDot{width:9px;height:9px;border-radius:99px;background:var(--yellow);box-shadow:0 0 0 6px rgba(255,200,61,.16)}
+    .statusDot.ok{background:var(--green);box-shadow:0 0 0 6px rgba(34,164,71,.16)}
+    .statusDot.err{background:var(--red);box-shadow:0 0 0 6px rgba(239,68,68,.14)}
+    .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:18px;}
+    .stat{background:rgba(255,255,255,.84);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:var(--shadow2);position:relative;overflow:hidden;animation:fadeUp .45s ease both}
+    .stat::after{content:"";position:absolute;right:-26px;top:-26px;width:90px;height:90px;border-radius:50%;background:rgba(34,164,71,.10)}
+    .stat .label{color:var(--muted);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+    .stat .value{font-size:30px;font-weight:900;letter-spacing:-.05em;margin-top:8px}
+    .panel{background:rgba(255,255,255,.88);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:18px;animation:fadeUp .45s ease both}
+    .panelHead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:18px 18px 14px;border-bottom:1px solid var(--line)}
+    .panelHead h2{margin:0;font-size:20px;letter-spacing:-.03em}
+    .panelHead p{margin:5px 0 0;color:var(--muted);font-weight:600;font-size:13px}
+    .panelBody{padding:18px}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .field{display:flex;flex-direction:column;gap:8px;min-width:0}
+    .field label{font-size:12px;color:var(--muted);font-weight:900;text-transform:uppercase;letter-spacing:.04em}
+    .input,.select,.textarea{width:100%;border:1px solid var(--line);background:#fff;border-radius:16px;min-height:46px;padding:12px 13px;outline:none;color:var(--text);font-weight:600;box-shadow:0 6px 16px rgba(21,32,24,.04)}
+    .textarea{resize:vertical;min-height:96px}
+    .input:focus,.select:focus,.textarea:focus{border-color:rgba(34,164,71,.55);box-shadow:0 0 0 4px rgba(34,164,71,.10)}
+    .btn{border:0;border-radius:16px;min-height:44px;padding:11px 15px;font-weight:900;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.18s ease;white-space:nowrap}
+    .btn:hover{transform:translateY(-1px);filter:brightness(.98)}
+    .btnPrimary{background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;box-shadow:0 14px 30px rgba(34,164,71,.24)}
+    .btnGhost{background:#fff;color:var(--text);border:1px solid var(--line)}
+    .btnWarn{background:rgba(255,200,61,.18);color:#664600;border:1px solid rgba(255,200,61,.35)}
+    .btnDanger{background:rgba(239,68,68,.10);color:#b91c1c;border:1px solid rgba(239,68,68,.22)}
+    .btnTiny{min-height:34px;padding:8px 10px;border-radius:12px;font-size:12px}
+    .actionsRow{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+    .toolbar .input{max-width:360px}
+    .stockEditor{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:4px}
+    .stockPill{background:var(--panel2);border:1px solid var(--line);border-radius:16px;padding:10px;display:flex;flex-direction:column;gap:7px}
+    .stockPill span{font-size:12px;font-weight:900;color:var(--muted)}
+    .stockPill input{border:1px solid var(--line);border-radius:12px;padding:9px;background:#fff;font-weight:800;min-width:0}
+    .tableWrap{overflow:auto;border:1px solid var(--line);border-radius:20px;background:#fff}
+    table{width:100%;border-collapse:separate;border-spacing:0;min-width:980px}
+    th,td{text-align:left;padding:13px;border-bottom:1px solid rgba(21,32,24,.08);font-size:13px;vertical-align:middle}
+    th{position:sticky;top:0;background:#f8fbf3;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em;z-index:1}
+    tr:last-child td{border-bottom:0}
+    tbody tr{transition:.15s ease}
+    tbody tr:hover{background:#fbfdf7}
+    .prodCell{display:flex;align-items:center;gap:11px;min-width:250px}
+    .thumb{width:48px;height:48px;border-radius:16px;background:#f0f5e9;border:1px solid var(--line);overflow:hidden;display:grid;place-items:center;font-size:22px;flex:0 0 auto}
+    .thumb img{width:100%;height:100%;object-fit:cover}
+    .prodName{font-weight:900;line-height:1.2}
+    .prodCode{font-size:11px;color:var(--muted);margin-top:3px}
+    .badge{display:inline-flex;align-items:center;border-radius:999px;padding:6px 9px;font-size:11px;font-weight:900;border:1px solid var(--line);background:#fff;color:var(--muted)}
+    .badge.on{background:rgba(34,164,71,.10);border-color:rgba(34,164,71,.22);color:var(--green2)}
+    .badge.off{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.18);color:#b91c1c}
+    .badge.low{background:rgba(255,138,42,.10);border-color:rgba(255,138,42,.25);color:#9a4b00}
+    .imgPreview{width:100%;height:190px;border:1px dashed rgba(21,32,24,.18);border-radius:20px;background:#f8fbf3;display:grid;place-items:center;overflow:hidden;color:var(--muted);font-weight:800;text-align:center;padding:12px}
+    .imgPreview img{width:100%;height:100%;object-fit:cover}
+    .empty{padding:24px;text-align:center;color:var(--muted);font-weight:800;background:#fff;border:1px dashed var(--line);border-radius:20px}
+    .loginScreen{min-height:100vh;display:grid;place-items:center;padding:22px;background:radial-gradient(circle at 30% 20%,rgba(200,240,69,.28),transparent 30%),linear-gradient(135deg,#101a13,#1f3a26)}
+    .loginCard{width:min(460px,100%);background:rgba(255,255,255,.96);border:1px solid rgba(255,255,255,.30);border-radius:30px;padding:28px;box-shadow:0 30px 90px rgba(0,0,0,.28);animation:pop .35s ease both}
+    .loginLogo{width:76px;height:76px;border-radius:26px;background:linear-gradient(135deg,var(--lime),var(--green));display:grid;place-items:center;font-size:38px;margin:0 auto 14px;box-shadow:0 18px 50px rgba(34,164,71,.24)}
+    .loginCard h1{text-align:center;margin:0;font-size:30px;letter-spacing:-.05em}.loginCard p{text-align:center;color:var(--muted);margin:8px 0 20px;font-weight:600}
+    .toast{position:fixed;left:50%;bottom:calc(20px + var(--safeB));transform:translateX(-50%) translateY(20px);background:#101a13;color:#fff;padding:12px 16px;border-radius:999px;box-shadow:0 20px 60px rgba(0,0,0,.24);font-weight:800;font-size:13px;z-index:1000;opacity:0;pointer-events:none;transition:.22s ease;max-width:calc(100vw - 24px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}@keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+    @media(max-width:1060px){.appShell{grid-template-columns:1fr}aside{position:relative;height:auto;border-right:0}.stats{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}.stockEditor{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:620px){main{padding:14px}.topbar{align-items:flex-start;flex-direction:column}.stats{grid-template-columns:1fr}.grid3{grid-template-columns:1fr}.stockEditor{grid-template-columns:1fr}.panelHead{flex-direction:column}.actionsRow .btn{width:100%}.toolbar .input,.toolbar .select,.toolbar .btn{width:100%;max-width:none}}
   </style>
 </head>
 <body>
-  <section id="loginView" class="loginPage">
-    <div class="loginCard">
-      <div class="logo">🛒</div>
-      <h1>Admin Mercadimas</h1>
-      <p>Ingresa para crear productos, actualizar precios, controlar stock y configurar el catálogo público.</p>
-      <form id="loginForm" class="formGrid">
-        <div class="field"><label>Correo administrador</label><input class="input" id="email" type="email" autocomplete="email" required /></div>
-        <div class="field"><label>Contraseña</label><input class="input" id="password" type="password" autocomplete="current-password" required /></div>
-        <button class="btn btnGreen" type="submit">Entrar al panel</button>
-        <div id="loginError" class="loginError hidden"></div>
-      </form>
-      <p class="help">El usuario debe existir en Firebase Authentication y su UID debe estar creado en la colección <b>admins</b>.</p>
-    </div>
+  <section class="loginScreen" id="loginScreen">
+    <form class="loginCard" id="loginForm">
+      <div class="loginLogo">🛒</div>
+      <h1>Mercadimas</h1>
+      <p>Panel privado de inventario. Entra con un usuario creado en Firebase Authentication.</p>
+      <div class="field">
+        <label for="loginEmail">Correo electrónico</label>
+        <input class="input" id="loginEmail" type="email" autocomplete="email" required placeholder="admin@mercadimas.com" />
+      </div>
+      <div class="field" style="margin-top:12px">
+        <label for="loginPassword">Contraseña</label>
+        <input class="input" id="loginPassword" type="password" autocomplete="current-password" required placeholder="••••••••" />
+      </div>
+      <button class="btn btnPrimary" style="width:100%;margin-top:18px" type="submit">Ingresar al panel</button>
+      <div class="version" style="color:#415044;background:#f2f7ea;border-color:#dfe9d7;text-align:center">Versión corregida: AUTH TODOS v4 — acceso por Authentication</div>
+    </form>
   </section>
 
-  <section id="appView" class="hidden">
-    <header class="topbar">
-      <div class="container topbarInner">
-        <div class="brand"><div class="brandLogo">🛒</div><div><div class="brandTitle">Mercadimas</div><div class="brandSub">Panel de inventario y catálogo</div></div></div>
-        <div class="userBox"><span class="userEmail" id="userEmail"></span><a href="catalogo.html" target="_blank" class="btn btnGhost">Ver catálogo</a><button class="btn btnDark" id="logoutBtn">Salir</button></div>
+  <section class="appShell hidden" id="appShell">
+    <aside>
+      <div class="brandBox"><div class="logoMark">🛒</div><div><div class="brandTitle">Mercadimas</div><div class="brandSub">Inventario y catálogo</div></div></div>
+      <div class="version">AUTH TODOS v4 · Acceso por Firebase Authentication</div>
+      <div class="userCard"><div class="userEmail" id="userEmail">—</div><div class="userHint">Cualquier usuario existente en Firebase Authentication puede administrar.</div></div>
+      <button class="navBtn active" data-view="dashboard">📊 Inventario</button>
+      <button class="navBtn" data-view="settings">⚙️ Configuración</button>
+      <button class="navBtn" data-view="help">🧩 Reglas Firebase</button>
+      <button class="logoutBtn" id="logoutBtn">Cerrar sesión</button>
+    </aside>
+
+    <main>
+      <div class="topbar">
+        <div class="pageTitle"><h1 id="pageHeading">Inventario</h1><p>Administra productos, precios, imágenes, descripciones, cantidades y estado del catálogo.</p></div>
+        <div class="statusPill"><span class="statusDot" id="statusDot"></span><span id="statusText">Conectando…</span></div>
       </div>
-    </header>
 
-    <main class="container">
-      <section class="hero"><div class="heroPanel"><div><h1>Control total del supermercado.</h1><p>Administra productos, precios, imágenes, descripciones, cantidades y disponibilidad en tiempo real.</p></div><button class="btn btnYellow" id="seedBtn">Crear productos ejemplo</button></div></section>
-      <section class="stats"><div class="stat"><b id="statTotal">0</b><span>Total productos</span></div><div class="stat"><b id="statVisible">0</b><span>Visibles</span></div><div class="stat"><b id="statUnits">0</b><span>Unidades en stock</span></div><div class="stat"><b id="statLow">0</b><span>Bajo stock</span></div></section>
+      <section id="dashboardView">
+        <div class="stats">
+          <div class="stat"><div class="label">Productos</div><div class="value" id="statProducts">0</div></div>
+          <div class="stat"><div class="label">Visibles</div><div class="value" id="statActive">0</div></div>
+          <div class="stat"><div class="label">Unidades</div><div class="value" id="statStock">0</div></div>
+          <div class="stat"><div class="label">Bajo stock</div><div class="value" id="statLow">0</div></div>
+        </div>
 
-      <section class="layout">
-        <aside class="panel">
-          <div class="panelHead"><h2 id="formTitle">Nuevo producto</h2><button class="btn btnGhost" id="newBtn">Nuevo</button></div>
+        <div class="panel">
+          <div class="panelHead"><div><h2 id="formTitle">Nuevo producto</h2><p>Completa la información del producto que verá el cliente en el catálogo.</p></div><div class="actionsRow"><button class="btn btnGhost" id="resetFormBtn" type="button">Nuevo</button><button class="btn btnWarn" id="seedBtn" type="button">Crear ejemplos</button></div></div>
           <div class="panelBody">
-            <form id="productForm" class="formGrid">
+            <form id="productForm">
               <input type="hidden" id="productId" />
-              <div class="two"><div class="field"><label>Nombre</label><input class="input" id="pName" placeholder="Ej: Arroz Diana 500g" required /></div><div class="field"><label>Código / SKU</label><input class="input" id="pCode" placeholder="AB-001" /></div></div>
-              <div class="two"><div class="field"><label>Categoría</label><select id="pCategory" required></select></div><div class="field"><label>Marca</label><input class="input" id="pBrand" placeholder="Marca" /></div></div>
-              <div class="three"><div class="field"><label>Presentación</label><input class="input" id="pUnit" placeholder="Unidad, Libra, 500g…" value="Unidad" /></div><div class="field"><label>Precio</label><input class="input" id="pPrice" type="number" min="0" step="100" required /></div><div class="field"><label>Descuento %</label><input class="input" id="pDiscount" type="number" min="0" max="90" step="1" value="0" /></div></div>
-              <div class="two"><div class="field"><label>Cantidad en stock</label><input class="input" id="pStock" type="number" min="0" step="1" value="0" /></div><div class="field"><label>Alerta bajo stock</label><input class="input" id="pMinStock" type="number" min="0" step="1" value="5" /></div></div>
-              <div class="field"><label>Descripción</label><textarea id="pDesc" rows="3" placeholder="Descripción corta del producto"></textarea></div>
-              <div class="field"><label>Imagen por URL</label><input class="input" id="pImage" placeholder="https://…" /></div>
-              <div class="actions"><button class="btn btnGhost" type="button" id="uploadBtn">Subir imagen liviana</button><input class="hiddenFile" id="imageFile" type="file" accept="image/*" /><button class="btn btnGhost" type="button" id="clearImage">Quitar imagen</button></div>
-              <div class="preview" id="imagePreview">Vista previa de imagen</div>
-              <div class="two"><label class="field"><span class="label">Visible en catálogo</span><select id="pActive"><option value="true">Sí</option><option value="false">No</option></select></label><label class="field"><span class="label">Destacado</span><select id="pFeatured"><option value="false">No</option><option value="true">Sí</option></select></label></div>
-              <div class="actions"><button class="btn btnGreen" type="submit">Guardar producto</button><button class="btn btnGhost" type="button" id="resetBtn">Limpiar</button></div>
+              <div class="grid3">
+                <div class="field"><label>Nombre</label><input class="input" id="name" required placeholder="Ej: Arroz Diana 500g" /></div>
+                <div class="field"><label>Código / SKU</label><input class="input" id="code" placeholder="Ej: AB-001" /></div>
+                <div class="field"><label>Categoría</label><select class="select" id="category"></select></div>
+              </div>
+              <div class="grid3" style="margin-top:14px">
+                <div class="field"><label>Marca</label><input class="input" id="brand" placeholder="Ej: Familia, Diana, Colanta" /></div>
+                <div class="field"><label>Unidad</label><input class="input" id="unit" placeholder="Ej: Unidad, libra, paquete, botella" /></div>
+                <div class="field"><label>Imagen URL</label><input class="input" id="image" placeholder="https://..." /></div>
+              </div>
+              <div class="grid3" style="margin-top:14px">
+                <div class="field"><label>Precio</label><input class="input" id="price" type="number" min="0" step="100" required placeholder="0" /></div>
+                <div class="field"><label>Descuento %</label><input class="input" id="discountPercent" type="number" min="0" max="90" step="1" value="0" /></div>
+                <div class="field"><label>Stock mínimo alerta</label><input class="input" id="minStock" type="number" min="0" step="1" value="5" /></div>
+              </div>
+              <div class="grid2" style="margin-top:14px">
+                <div class="field"><label>Descripción</label><textarea class="textarea" id="description" placeholder="Describe el producto, presentación, sabor, tamaño o detalles importantes."></textarea></div>
+                <div class="field"><label>Vista previa imagen</label><div class="imgPreview" id="imagePreview">Sin imagen</div></div>
+              </div>
+              <div class="field" style="margin-top:14px">
+                <label>Stock por presentación / talla / unidad</label>
+                <div class="stockEditor" id="stockEditor"></div>
+              </div>
+              <div class="actionsRow" style="margin-top:18px;justify-content:space-between">
+                <label style="display:flex;align-items:center;gap:9px;font-weight:800;color:var(--muted)"><input type="checkbox" id="active" checked /> Visible en catálogo</label>
+                <div class="actionsRow"><button class="btn btnGhost" type="button" id="clearBtn">Limpiar</button><button class="btn btnPrimary" type="submit">Guardar producto</button></div>
+              </div>
             </form>
-            <div class="notice" style="margin-top:14px">Para mejor rendimiento, usa enlaces de imagen o imágenes comprimidas. Firestore no debe guardar archivos muy pesados.</div>
           </div>
-        </aside>
+        </div>
 
-        <section class="panel">
-          <div class="panelHead"><h2>Inventario</h2><div class="tabs"><button class="tab active" data-tab="products">Productos</button><button class="tab" data-tab="settings">Configuración</button></div></div>
-          <div class="panelBody" id="productsTab">
-            <div class="toolbar"><input class="input" id="searchInventory" placeholder="Buscar por nombre, código, categoría…" /><select id="filterCategory"></select></div>
-            <div class="productList" id="productList"></div>
-            <div class="notice hidden" id="emptyInventory">Aún no hay productos. Crea el primero o usa el botón de productos ejemplo.</div>
+        <div class="panel">
+          <div class="panelHead"><div><h2>Productos registrados</h2><p>Consulta, edita, oculta o elimina productos del supermercado.</p></div></div>
+          <div class="panelBody">
+            <div class="toolbar"><input class="input" id="search" placeholder="Buscar por nombre, código, categoría o marca..." /><select class="select" id="filterCat" style="max-width:260px"></select><button class="btn btnGhost" id="refreshBtn">Actualizar</button></div>
+            <div class="tableWrap"><table><thead><tr><th>Producto</th><th>Categoría</th><th>Precio</th><th>Stock</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="productsBody"></tbody></table></div>
+            <div class="empty hidden" id="emptyTable">No hay productos para mostrar.</div>
           </div>
-          <div class="panelBody hidden" id="settingsTab">
-            <form id="settingsForm" class="settingsGrid">
-              <div class="two"><div class="field"><label>Nombre del negocio</label><input class="input" id="sStoreName" /></div><div class="field"><label>Slogan</label><input class="input" id="sSlogan" /></div></div>
-              <div class="field"><label>WhatsApp del negocio</label><input class="input" id="sWhatsapp" placeholder="573001112233" /><p class="help">Formato recomendado: 57 + número de Colombia, sin espacios ni signos.</p></div>
-              <div class="field"><label>Mensaje inicial de WhatsApp</label><textarea id="sIntro" rows="2"></textarea><p class="help">Puedes usar {{store}} para insertar el nombre del negocio.</p></div>
-              <div class="field"><label>Métodos de pago</label><textarea id="sPayments" rows="3" placeholder="Uno por línea"></textarea></div>
-              <div class="field"><label>Opciones de envío</label><textarea id="sShipping" rows="5" placeholder="id | nombre | costo | tiempo"></textarea><p class="help">Ejemplo: local | Envío local | 5000 | Hoy</p></div>
-              <button class="btn btnGreen" type="submit">Guardar configuración pública</button>
-            </form>
-          </div>
-        </section>
+        </div>
+      </section>
+
+      <section id="settingsView" class="hidden">
+        <div class="panel"><div class="panelHead"><div><h2>Configuración pública</h2><p>Estos datos los lee el catálogo: WhatsApp, pagos, envíos y textos.</p></div></div><div class="panelBody">
+          <form id="settingsForm">
+            <div class="grid2"><div class="field"><label>Nombre de tienda</label><input class="input" id="storeName" value="Mercadimas" /></div><div class="field"><label>Eslogan</label><input class="input" id="slogan" value="Mercado, hogar y ahorro en un solo lugar" /></div></div>
+            <div class="grid2" style="margin-top:14px"><div class="field"><label>WhatsApp con indicativo</label><input class="input" id="whatsappNumber" placeholder="573001112233" /></div><div class="field"><label>Mensaje inicial</label><input class="input" id="messageIntro" /></div></div>
+            <div class="grid2" style="margin-top:14px"><div class="field"><label>Métodos de pago separados por coma</label><textarea class="textarea" id="paymentMethods"></textarea></div><div class="field"><label>Opciones de envío: etiqueta|costo|tiempo, una por línea</label><textarea class="textarea" id="shippingOptions"></textarea></div></div>
+            <button class="btn btnPrimary" type="submit" style="margin-top:16px">Guardar configuración</button>
+          </form>
+        </div></div>
+      </section>
+
+      <section id="helpView" class="hidden">
+        <div class="panel"><div class="panelHead"><div><h2>Reglas correctas de Firestore</h2><p>Publica estas reglas para permitir escritura a cualquier usuario autenticado.</p></div></div><div class="panelBody"><pre style="white-space:pre-wrap;background:#101a13;color:#dff6dc;border-radius:20px;padding:18px;overflow:auto;font-size:13px;line-height:1.55">rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    match /products/{productId} {
+      allow read: if true;
+      allow create, update, delete: if signedIn();
+    }
+
+    match /settings/{docId} {
+      allow read: if docId == "public";
+      allow create, update, delete: if docId == "public" && signedIn();
+    }
+  }
+}</pre></div></div>
       </section>
     </main>
   </section>
+
   <div class="toast" id="toast"></div>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
-    import { getFirestore, collection, doc, getDoc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
+    import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+    import { getFirestore, collection, doc, getDoc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, serverTimestamp, writeBatch } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
 
-    const firebaseConfig = { apiKey:"AIzaSyAsVvq-okZdhi3eeigyw0CuNMgNe30mYJA", authDomain:"webcatalogo-e8b89.firebaseapp.com", projectId:"webcatalogo-e8b89", storageBucket:"webcatalogo-e8b89.firebasestorage.app", messagingSenderId:"603338095024", appId:"1:603338095024:web:8ffac945f31a0fc4d8be75" };
-    const app=initializeApp(firebaseConfig), auth=getAuth(app), db=getFirestore(app);
-    const CATEGORIES=["Abarrotes","Frutas y verduras","Lácteos","Carnes y congelados","Bebidas","Aseo del hogar","Cuidado personal","Mascotas","Bebés","Panadería","Droguería","Hogar","Otros"];
-    const ICONS={"Abarrotes":"🥫","Frutas y verduras":"🥦","Lácteos":"🥛","Carnes y congelados":"🥩","Bebidas":"🥤","Aseo del hogar":"🧽","Cuidado personal":"🧴","Mascotas":"🐾","Bebés":"🍼","Panadería":"🥖","Droguería":"💊","Hogar":"🏠","Otros":"🛒"};
-    const DEFAULT_SETTINGS={storeName:"Mercadimas",slogan:"Mercado, hogar y ahorro en un solo lugar",whatsappNumber:"573215416766",messageIntro:"Hola 👋 Quiero hacer un pedido en {{store}}:",paymentMethods:["Nequi","Daviplata","Transferencia bancaria","Efectivo","Contraentrega"],shippingOptions:[{id:"local",label:"Envío local",cost:5000,eta:"Hoy"},{id:"zona2",label:"Zona cercana",cost:8000,eta:"24–48h"},{id:"pickup",label:"Recoger en tienda",cost:0,eta:"Hoy"}]};
-    const $=(s,el=document)=>el.querySelector(s); const $$=(s,el=document)=>Array.from(el.querySelectorAll(s));
-    let products=[], settings={...DEFAULT_SETTINGS}, unsubscribe=null;
-    function money(n){return "$ "+new Intl.NumberFormat("es-CO").format(Math.round(Number(n||0)))}
-    function finalPrice(p){const pct=Math.max(0,Math.min(90,Number(p.discountPercent||0)));return pct>0?Math.round(Number(p.price||0)*(100-pct)/100):Number(p.price||0)}
-    function stock(p){return Math.max(0,Number(p.stock??0)||0)}
-    function escapeHTML(s){return String(s??"").replace(/[&<>'"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c]))}
-    function escapeAttr(s){return escapeHTML(s)}
-    function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("show"),2300)}
-    function showLoginError(msg){$("#loginError").textContent=msg;$("#loginError").classList.remove("hidden")}
+    const firebaseConfig = {
+      apiKey: "AIzaSyAsVvq-okZdhi3eeigyw0CuNMgNe30mYJA",
+      authDomain: "webcatalogo-e8b89.firebaseapp.com",
+      projectId: "webcatalogo-e8b89",
+      storageBucket: "webcatalogo-e8b89.firebasestorage.app",
+      messagingSenderId: "603338095024",
+      appId: "1:603338095024:web:8ffac945f31a0fc4d8be75"
+    };
 
-    function fillSelects(){
-      $("#pCategory").innerHTML=CATEGORIES.map(c=>`<option>${c}</option>`).join("");
-      $("#filterCategory").innerHTML=`<option value="Todos">Todas las categorías</option>`+CATEGORIES.map(c=>`<option>${c}</option>`).join("");
+    const app = initializeApp(firebaseConfig);
+    // IMPORTANTE: esta versión no valida roles ni UID adicionales; si el usuario inicia sesión en Authentication, entra.
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    const CATEGORIES = ["Abarrotes","Frutas y verduras","Lácteos","Carnes y congelados","Bebidas","Aseo del hogar","Cuidado personal","Mascotas","Bebés","Panadería","Droguería","Hogar","Otros"];
+    const STOCK_LABELS = ["Unidad","Paquete","Libra","Caja","Botella","Bolsa","Docena","Litro"];
+    const ICONS = {"Abarrotes":"🥫","Frutas y verduras":"🥦","Lácteos":"🥛","Carnes y congelados":"🥩","Bebidas":"🥤","Aseo del hogar":"🧽","Cuidado personal":"🧴","Mascotas":"🐾","Bebés":"🍼","Panadería":"🥖","Droguería":"💊","Hogar":"🏠","Otros":"🛒"};
+    const DEFAULT_SETTINGS = {
+      storeName:"Mercadimas",
+      slogan:"Mercado, hogar y ahorro en un solo lugar",
+      whatsappNumber:"573215416766",
+      messageIntro:"Hola 👋 Quiero hacer un pedido en {{store}}:",
+      paymentMethods:["Nequi","Daviplata","Transferencia bancaria","Efectivo","Contraentrega"],
+      shippingOptions:[{id:"local",label:"Envío local",cost:5000,eta:"Hoy"},{id:"zona2",label:"Zona cercana",cost:8000,eta:"24–48h"},{id:"pickup",label:"Recoger en tienda",cost:0,eta:"Hoy"}]
+    };
+
+    const $=(s,el=document)=>el.querySelector(s);
+    const $$=(s,el=document)=>Array.from(el.querySelectorAll(s));
+    let products = [];
+    let unsubscribeProducts = null;
+
+    function toast(msg){ const t=$("#toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(toast.t); toast.t=setTimeout(()=>t.classList.remove("show"),2400); }
+    function status(text,type="warn"){ $("#statusText").textContent=text; const d=$("#statusDot"); d.className="statusDot"+(type==="ok"?" ok":type==="err"?" err":""); }
+    function money(n){ return "$ " + new Intl.NumberFormat("es-CO").format(Math.round(Number(n||0))); }
+    function escapeHTML(s){ return String(s??"").replace(/[&<>'"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c])); }
+    function totalStock(p){ return Math.max(0, Number(p.stock ?? p.totalStock ?? 0)||0); }
+    function finalPrice(p){ const base=Number(p.price||0); const pct=Math.max(0,Math.min(90,Number(p.discountPercent||0)||0)); return pct>0?Math.round(base*(100-pct)/100):base; }
+
+    function initSelectors(){
+      $("#category").innerHTML=CATEGORIES.map(c=>`<option value="${escapeHTML(c)}">${ICONS[c]||"🏷️"} ${escapeHTML(c)}</option>`).join("");
+      $("#filterCat").innerHTML=`<option value="Todos">Todas las categorías</option>`+CATEGORIES.map(c=>`<option value="${escapeHTML(c)}">${escapeHTML(c)}</option>`).join("");
+      $("#stockEditor").innerHTML=STOCK_LABELS.map(l=>`<div class="stockPill"><span>${escapeHTML(l)}</span><input type="number" min="0" step="1" value="0" data-stock="${escapeHTML(l)}"></div>`).join("");
     }
-    async function checkAdmin(user){ if(!user) return false; try{const snap=await getDoc(doc(db,"admins",user.uid)); return snap.exists();}catch(e){console.error(e); return false;} }
-    onAuthStateChanged(auth,async(user)=>{
-      if(!user){$("#loginView").classList.remove("hidden");$("#appView").classList.add("hidden"); if(unsubscribe) unsubscribe(); return;}
-      $("#userEmail").textContent=user.email||"Administrador";
-      const ok=await checkAdmin(user);
-      if(!ok){await signOut(auth); showLoginError("Este usuario no tiene permisos de administrador. Crea su UID en la colección admins."); return;}
-      $("#loginView").classList.add("hidden");$("#appView").classList.remove("hidden"); fillSelects(); await loadSettings(); listenProducts();
-    });
-    $("#loginForm").addEventListener("submit",async(e)=>{e.preventDefault();$("#loginError").classList.add("hidden");try{await signInWithEmailAndPassword(auth,$("#email").value.trim(),$("#password").value)}catch(err){console.error(err);showLoginError("No se pudo iniciar sesión. Revisa correo y contraseña.")}});
-    $("#logoutBtn").addEventListener("click",()=>signOut(auth));
+
+    function imgPreview(){
+      const src=$("#image").value.trim();
+      $("#imagePreview").innerHTML=src?`<img src="${escapeHTML(src)}" alt="Vista previa" onerror="this.parentElement.textContent='No se pudo cargar la imagen'">`:"Sin imagen";
+    }
+
+    function formData(){
+      const stockBySize={};
+      $$('[data-stock]').forEach(i=>{ const v=Math.max(0,Number(i.value||0)||0); if(v>0) stockBySize[i.dataset.stock]=v; });
+      const stock=Object.values(stockBySize).reduce((a,b)=>a+b,0);
+      return {
+        name:$("#name").value.trim(),
+        code:$("#code").value.trim(),
+        category:$("#category").value,
+        brand:$("#brand").value.trim(),
+        unit:$("#unit").value.trim()||"Unidad",
+        image:$("#image").value.trim(),
+        price:Math.max(0,Number($("#price").value||0)||0),
+        discountPercent:Math.max(0,Math.min(90,Number($("#discountPercent").value||0)||0)),
+        minStock:Math.max(0,Number($("#minStock").value||5)||0),
+        description:$("#description").value.trim(),
+        stockBySize,
+        stock,
+        totalStock:stock,
+        active:$("#active").checked,
+        updatedAt:serverTimestamp()
+      };
+    }
+
+    function fillForm(p){
+      $("#productId").value=p.id||""; $("#formTitle").textContent=p.id?"Editar producto":"Nuevo producto";
+      $("#name").value=p.name||""; $("#code").value=p.code||""; $("#category").value=p.category||"Otros"; $("#brand").value=p.brand||""; $("#unit").value=p.unit||"Unidad"; $("#image").value=p.image||""; $("#price").value=p.price||0; $("#discountPercent").value=p.discountPercent||0; $("#minStock").value=p.minStock??5; $("#description").value=p.description||""; $("#active").checked=p.active!==false;
+      $$('[data-stock]').forEach(i=>{ i.value=(p.stockBySize&&p.stockBySize[i.dataset.stock])||0; });
+      imgPreview(); window.scrollTo({top:0,behavior:"smooth"});
+    }
+
+    function resetForm(){ $("#productForm").reset(); $("#productId").value=""; $("#formTitle").textContent="Nuevo producto"; $("#category").value="Abarrotes"; $("#unit").value="Unidad"; $("#discountPercent").value=0; $("#minStock").value=5; $("#active").checked=true; $$('[data-stock]').forEach(i=>i.value=0); imgPreview(); }
+
+    async function saveProduct(e){
+      e.preventDefault();
+      const data=formData();
+      if(!data.name){ toast("Escribe el nombre del producto"); return; }
+      if(!data.price){ toast("Escribe un precio válido"); return; }
+      try{
+        const id=$("#productId").value.trim();
+        status("Guardando…");
+        if(id) await updateDoc(doc(db,"products",id),data);
+        else await addDoc(collection(db,"products"),{...data,createdAt:serverTimestamp()});
+        toast("Producto guardado"); resetForm(); status("Conectado","ok");
+      }catch(err){ console.error(err); status("Error de permisos","err"); toast("No se pudo guardar. Revisa reglas de Firestore."); }
+    }
+
+    function filtered(){
+      const q=$("#search").value.trim().toLowerCase(); const cat=$("#filterCat").value;
+      return products.filter(p=>{
+        const text=`${p.name||""} ${p.code||""} ${p.category||""} ${p.brand||""} ${p.description||""}`.toLowerCase();
+        return (!q||text.includes(q)) && (cat==="Todos"||(p.category||"Otros")===cat);
+      }).sort((a,b)=>String(a.name||"").localeCompare(String(b.name||""),"es"));
+    }
+
+    function renderProducts(){
+      const list=filtered();
+      $("#emptyTable").classList.toggle("hidden",list.length>0);
+      $("#productsBody").innerHTML=list.map(p=>{
+        const stock=totalStock(p); const low=stock<=Number(p.minStock||5); const img=p.image?`<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}">`:`<span>${ICONS[p.category]||"🛒"}</span>`;
+        return `<tr>
+          <td><div class="prodCell"><div class="thumb">${img}</div><div><div class="prodName">${escapeHTML(p.name||"Producto")}</div><div class="prodCode">${escapeHTML(p.code||"Sin código")} · ${escapeHTML(p.brand||"Mercadimas")}</div></div></div></td>
+          <td>${escapeHTML(p.category||"Otros")}</td>
+          <td>${p.discountPercent?`<span style="color:#9ca3af;text-decoration:line-through">${money(p.price)}</span><br>`:""}<b>${money(finalPrice(p))}</b></td>
+          <td><span class="badge ${low?'low':''}">${stock} unidades</span></td>
+          <td><span class="badge ${p.active!==false?'on':'off'}">${p.active!==false?'Visible':'Oculto'}</span></td>
+          <td><div class="actionsRow"><button class="btn btnGhost btnTiny" data-edit="${p.id}">Editar</button><button class="btn btnWarn btnTiny" data-toggle="${p.id}">${p.active!==false?'Ocultar':'Mostrar'}</button><button class="btn btnDanger btnTiny" data-delete="${p.id}">Eliminar</button></div></td>
+        </tr>`;
+      }).join("");
+      $$('[data-edit]').forEach(b=>b.addEventListener('click',()=>{ const p=products.find(x=>x.id===b.dataset.edit); if(p) fillForm(p); }));
+      $$('[data-toggle]').forEach(b=>b.addEventListener('click',()=>toggleProduct(b.dataset.toggle)));
+      $$('[data-delete]').forEach(b=>b.addEventListener('click',()=>deleteProduct(b.dataset.delete)));
+      renderStats();
+    }
+
+    function renderStats(){
+      $("#statProducts").textContent=products.length;
+      $("#statActive").textContent=products.filter(p=>p.active!==false).length;
+      $("#statStock").textContent=products.reduce((s,p)=>s+totalStock(p),0);
+      $("#statLow").textContent=products.filter(p=>totalStock(p)<=Number(p.minStock||5)).length;
+    }
+
+    async function toggleProduct(id){
+      const p=products.find(x=>x.id===id); if(!p) return;
+      try{ await updateDoc(doc(db,"products",id),{active:p.active===false,updatedAt:serverTimestamp()}); toast("Estado actualizado"); }catch(e){ console.error(e); toast("No se pudo cambiar el estado"); }
+    }
+    async function deleteProduct(id){
+      const p=products.find(x=>x.id===id); if(!p) return;
+      if(!confirm(`¿Eliminar ${p.name}?`)) return;
+      try{ await deleteDoc(doc(db,"products",id)); toast("Producto eliminado"); resetForm(); }catch(e){ console.error(e); toast("No se pudo eliminar"); }
+    }
 
     async function loadSettings(){
-      try{const snap=await getDoc(doc(db,"settings","public")); if(snap.exists()) settings={...DEFAULT_SETTINGS,...snap.data()}; else await setDoc(doc(db,"settings","public"),DEFAULT_SETTINGS,{merge:true});}catch(e){console.error(e);toast("No se pudo cargar configuración")}
-      renderSettingsForm();
+      try{
+        const snap=await getDoc(doc(db,"settings","public")); const s=snap.exists()?{...DEFAULT_SETTINGS,...snap.data()}:DEFAULT_SETTINGS;
+        $("#storeName").value=s.storeName||"Mercadimas"; $("#slogan").value=s.slogan||DEFAULT_SETTINGS.slogan; $("#whatsappNumber").value=s.whatsappNumber||""; $("#messageIntro").value=s.messageIntro||DEFAULT_SETTINGS.messageIntro;
+        $("#paymentMethods").value=(s.paymentMethods||DEFAULT_SETTINGS.paymentMethods).join(", ");
+        $("#shippingOptions").value=(s.shippingOptions||DEFAULT_SETTINGS.shippingOptions).map(o=>`${o.label}|${o.cost||0}|${o.eta||""}`).join("\n");
+      }catch(e){ console.warn(e); }
     }
-    function renderSettingsForm(){
-      $("#sStoreName").value=settings.storeName||"Mercadimas"; $("#sSlogan").value=settings.slogan||""; $("#sWhatsapp").value=settings.whatsappNumber||""; $("#sIntro").value=settings.messageIntro||""; $("#sPayments").value=(settings.paymentMethods||[]).join("\n"); $("#sShipping").value=(settings.shippingOptions||[]).map(o=>`${o.id} | ${o.label} | ${o.cost||0} | ${o.eta||""}`).join("\n");
+
+    async function saveSettings(e){
+      e.preventDefault();
+      const paymentMethods=$("#paymentMethods").value.split(",").map(x=>x.trim()).filter(Boolean);
+      const shippingOptions=$("#shippingOptions").value.split("\n").map((line,i)=>{ const [label,cost,eta]=line.split("|").map(x=>String(x||"").trim()); return label?{id:`ship_${i+1}`,label,cost:Number(cost||0)||0,eta}:null; }).filter(Boolean);
+      const data={storeName:$("#storeName").value.trim()||"Mercadimas",slogan:$("#slogan").value.trim(),whatsappNumber:$("#whatsappNumber").value.replace(/[^\d]/g,""),messageIntro:$("#messageIntro").value.trim()||DEFAULT_SETTINGS.messageIntro,paymentMethods:paymentMethods.length?paymentMethods:DEFAULT_SETTINGS.paymentMethods,shippingOptions:shippingOptions.length?shippingOptions:DEFAULT_SETTINGS.shippingOptions,updatedAt:serverTimestamp()};
+      try{ await setDoc(doc(db,"settings","public"),data,{merge:true}); toast("Configuración guardada"); }catch(e){ console.error(e); toast("No se pudo guardar configuración"); }
     }
-    $("#settingsForm").addEventListener("submit",async(e)=>{e.preventDefault(); const shipping=$("#sShipping").value.split("\n").map(l=>l.trim()).filter(Boolean).map((line,i)=>{const [id,label,cost,eta]=line.split("|").map(x=>String(x||"").trim());return {id:id||`envio_${i+1}`,label:label||"Envío",cost:Number(cost||0)||0,eta:eta||""}}); const data={storeName:$("#sStoreName").value.trim()||"Mercadimas",slogan:$("#sSlogan").value.trim(),whatsappNumber:$("#sWhatsapp").value.replace(/[^\d]/g,""),messageIntro:$("#sIntro").value.trim(),paymentMethods:$("#sPayments").value.split("\n").map(x=>x.trim()).filter(Boolean),shippingOptions:shipping,updatedAt:serverTimestamp()}; await setDoc(doc(db,"settings","public"),data,{merge:true}); settings={...settings,...data}; toast("Configuración guardada");});
 
-    function listenProducts(){ if(unsubscribe) unsubscribe(); unsubscribe=onSnapshot(collection(db,"products"),(snap)=>{products=snap.docs.map(d=>({id:d.id,...d.data()})); renderInventory(); renderStats();},err=>{console.error(err);toast("No se pudo leer el inventario")}); }
-    function renderStats(){ const visible=products.filter(p=>p.active!==false).length; const units=products.reduce((s,p)=>s+stock(p),0); const low=products.filter(p=>stock(p)>0 && stock(p)<=Number(p.minStock||5)).length; $("#statTotal").textContent=products.length; $("#statVisible").textContent=visible; $("#statUnits").textContent=units; $("#statLow").textContent=low; }
-    function filteredInventory(){const q=$("#searchInventory").value.trim().toLowerCase();const cat=$("#filterCategory").value;return products.filter(p=>{const catOk=cat==="Todos"||p.category===cat;const text=`${p.name||""} ${p.code||""} ${p.category||""} ${p.brand||""}`.toLowerCase();return catOk&&(!q||text.includes(q));}).sort((a,b)=>String(a.name||"").localeCompare(String(b.name||""),"es"));}
-    function renderInventory(){const list=filteredInventory();$("#emptyInventory").classList.toggle("hidden",list.length>0);$("#productList").innerHTML=list.map((p,i)=>`<article class="productRow" style="animation-delay:${Math.min(i*20,220)}ms"><div class="thumb">${p.image?`<img src="${escapeAttr(p.image)}" alt="${escapeAttr(p.name)}">`:(ICONS[p.category]||"🛒")}</div><div><div class="rowName">${escapeHTML(p.name||"Producto")}</div><div class="rowMeta"><span class="pill">${escapeHTML(p.category||"Otros")}</span><span class="pill">${money(finalPrice(p))}</span><span class="pill">Stock: ${stock(p)}</span>${p.active===false?'<span class="pill">Oculto</span>':''}${Number(p.discountPercent||0)>0?`<span class="pill">-${p.discountPercent}%</span>`:''}</div></div><div class="rowActions"><button class="iconBtn" title="Editar" data-edit="${p.id}">✏️</button><button class="iconBtn ${p.active!==false?'active':''}" title="Mostrar/Ocultar" data-toggle="${p.id}">${p.active!==false?'👁️':'🙈'}</button><button class="iconBtn danger" title="Eliminar" data-delete="${p.id}">🗑️</button></div></article>`).join(""); $$('[data-edit]').forEach(b=>b.addEventListener('click',()=>editProduct(b.dataset.edit))); $$('[data-toggle]').forEach(b=>b.addEventListener('click',()=>toggleProduct(b.dataset.toggle))); $$('[data-delete]').forEach(b=>b.addEventListener('click',()=>deleteProduct(b.dataset.delete)));}
-    $("#searchInventory").addEventListener("input",renderInventory); $("#filterCategory").addEventListener("change",renderInventory);
+    async function seedProducts(){
+      if(!confirm("¿Crear productos ejemplo?")) return;
+      const examples=[
+        {name:"Arroz Diana 500g",code:"AB-001",category:"Abarrotes",brand:"Diana",unit:"Paquete",price:3200,discountPercent:0,minStock:5,description:"Arroz blanco seleccionado para la canasta familiar.",stockBySize:{Paquete:30},stock:30,totalStock:30,active:true},
+        {name:"Aceite vegetal 900ml",code:"AB-002",category:"Abarrotes",brand:"Premier",unit:"Botella",price:9800,discountPercent:5,minStock:5,description:"Aceite vegetal ideal para cocinar.",stockBySize:{Botella:18},stock:18,totalStock:18,active:true},
+        {name:"Leche entera 1L",code:"LA-001",category:"Lácteos",brand:"Colanta",unit:"Bolsa",price:4200,discountPercent:0,minStock:8,description:"Leche entera pasteurizada.",stockBySize:{Bolsa:24},stock:24,totalStock:24,active:true},
+        {name:"Detergente en polvo 1kg",code:"AH-001",category:"Aseo del hogar",brand:"Ariel",unit:"Bolsa",price:14500,discountPercent:10,minStock:4,description:"Detergente para ropa con alto poder de limpieza.",stockBySize:{Bolsa:14},stock:14,totalStock:14,active:true},
+        {name:"Manzana roja",code:"FV-001",category:"Frutas y verduras",brand:"Mercadimas",unit:"Libra",price:5200,discountPercent:0,minStock:10,description:"Fruta fresca seleccionada.",stockBySize:{Libra:40},stock:40,totalStock:40,active:true}
+      ];
+      try{ const batch=writeBatch(db); examples.forEach(p=>batch.set(doc(collection(db,"products")),{...p,createdAt:serverTimestamp(),updatedAt:serverTimestamp()})); await batch.commit(); toast("Productos ejemplo creados"); }catch(e){ console.error(e); toast("No se pudieron crear ejemplos"); }
+    }
 
-    function productData(){return {name:$("#pName").value.trim(),code:$("#pCode").value.trim(),category:$("#pCategory").value,brand:$("#pBrand").value.trim(),unit:$("#pUnit").value.trim()||"Unidad",price:Number($("#pPrice").value||0),discountPercent:Math.max(0,Math.min(90,Number($("#pDiscount").value||0))),stock:Math.max(0,Number($("#pStock").value||0)),minStock:Math.max(0,Number($("#pMinStock").value||5)),description:$("#pDesc").value.trim(),image:$("#pImage").value.trim(),active:$("#pActive").value==="true",featured:$("#pFeatured").value==="true",updatedAt:serverTimestamp()};}
-    $("#productForm").addEventListener("submit",async(e)=>{e.preventDefault(); const data=productData(); if(!data.name||!data.price){toast("Nombre y precio son obligatorios");return;} const id=$("#productId").value; if(id){await updateDoc(doc(db,"products",id),data);toast("Producto actualizado");} else {data.createdAt=serverTimestamp(); await addDoc(collection(db,"products"),data);toast("Producto creado");} resetForm();});
-    function editProduct(id){const p=products.find(x=>x.id===id); if(!p)return; $("#formTitle").textContent="Editar producto"; $("#productId").value=p.id; $("#pName").value=p.name||""; $("#pCode").value=p.code||""; $("#pCategory").value=p.category||"Otros"; $("#pBrand").value=p.brand||""; $("#pUnit").value=p.unit||"Unidad"; $("#pPrice").value=p.price||0; $("#pDiscount").value=p.discountPercent||0; $("#pStock").value=stock(p); $("#pMinStock").value=p.minStock??5; $("#pDesc").value=p.description||""; $("#pImage").value=p.image||""; $("#pActive").value=String(p.active!==false); $("#pFeatured").value=String(!!p.featured); renderPreview(); window.scrollTo({top:0,behavior:"smooth"});}
-    function resetForm(){ $("#formTitle").textContent="Nuevo producto"; $("#productForm").reset(); $("#productId").value=""; $("#pUnit").value="Unidad"; $("#pDiscount").value=0; $("#pStock").value=0; $("#pMinStock").value=5; $("#pActive").value="true"; $("#pFeatured").value="false"; renderPreview(); }
-    async function toggleProduct(id){const p=products.find(x=>x.id===id); if(!p)return; await updateDoc(doc(db,"products",id),{active:!(p.active!==false),updatedAt:serverTimestamp()}); toast("Visibilidad actualizada");}
-    async function deleteProduct(id){const p=products.find(x=>x.id===id); if(!p)return; if(!confirm(`¿Eliminar ${p.name}?`))return; await deleteDoc(doc(db,"products",id)); toast("Producto eliminado"); if($("#productId").value===id) resetForm();}
-    $("#newBtn").addEventListener("click",resetForm); $("#resetBtn").addEventListener("click",resetForm);
-    function renderPreview(){const src=$("#pImage").value.trim(); $("#imagePreview").innerHTML=src?`<img src="${escapeAttr(src)}" alt="Vista previa">`:"Vista previa de imagen";}
-    $("#pImage").addEventListener("input",renderPreview); $("#uploadBtn").addEventListener("click",()=>$("#imageFile").click()); $("#clearImage").addEventListener("click",()=>{$("#pImage").value="";renderPreview();});
-    $("#imageFile").addEventListener("change",async(e)=>{const file=e.target.files?.[0]; if(!file)return; if(file.size>650000){toast("Imagen muy pesada. Usa una imagen menor a 650KB o una URL."); e.target.value=""; return;} const reader=new FileReader(); reader.onload=()=>{$("#pImage").value=reader.result;renderPreview();}; reader.readAsDataURL(file);});
+    function listenProducts(){
+      if(unsubscribeProducts) unsubscribeProducts();
+      status("Conectando…");
+      unsubscribeProducts=onSnapshot(collection(db,"products"),(snap)=>{ products=snap.docs.map(d=>({id:d.id,...d.data()})); status("Conectado","ok"); renderProducts(); },(err)=>{ console.error(err); status("Sin permisos","err"); toast("Error: publica las reglas para usuarios autenticados"); });
+    }
 
-    $$(".tab").forEach(t=>t.addEventListener("click",()=>{$$(".tab").forEach(x=>x.classList.remove("active"));t.classList.add("active");const tab=t.dataset.tab;$("#productsTab").classList.toggle("hidden",tab!=="products");$("#settingsTab").classList.toggle("hidden",tab!=="settings");}));
+    function showView(view){
+      ["dashboard","settings","help"].forEach(v=>$("#"+v+"View").classList.toggle("hidden",v!==view));
+      $$('.navBtn').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
+      $("#pageHeading").textContent=view==="dashboard"?"Inventario":view==="settings"?"Configuración":"Reglas Firebase";
+    }
 
-    const samples=[
-      {name:"Arroz Diana 500g",code:"ABA-001",category:"Abarrotes",brand:"Diana",unit:"500g",price:3200,discountPercent:0,stock:30,minStock:6,description:"Arroz blanco ideal para el mercado diario.",active:true,featured:true},
-      {name:"Aceite vegetal 900ml",code:"ABA-002",category:"Abarrotes",brand:"Premier",unit:"900ml",price:9800,discountPercent:5,stock:18,minStock:5,description:"Aceite vegetal para preparaciones del hogar.",active:true,featured:true},
-      {name:"Leche entera 1L",code:"LAC-001",category:"Lácteos",brand:"Alquería",unit:"1 litro",price:4300,discountPercent:0,stock:24,minStock:8,description:"Leche entera larga vida.",active:true,featured:false},
-      {name:"Detergente en polvo 1kg",code:"ASE-001",category:"Aseo del hogar",brand:"Fab",unit:"1kg",price:14500,discountPercent:10,stock:12,minStock:4,description:"Detergente para ropa con aroma fresco.",active:true,featured:true},
-      {name:"Manzana roja",code:"FRU-001",category:"Frutas y verduras",brand:"Frescos",unit:"Libra",price:4800,discountPercent:0,stock:20,minStock:5,description:"Fruta fresca seleccionada para tu hogar.",active:true,featured:false},
-      {name:"Papel higiénico x4",code:"HOG-001",category:"Hogar",brand:"Familia",unit:"Paquete x4",price:12400,discountPercent:0,stock:16,minStock:5,description:"Papel higiénico suave para uso familiar.",active:true,featured:false}
-    ];
-    $("#seedBtn").addEventListener("click",async()=>{if(products.length && !confirm("Ya tienes productos. ¿Agregar productos ejemplo de Mercadimas?"))return; for(const p of samples){await addDoc(collection(db,"products"),{...p,createdAt:serverTimestamp(),updatedAt:serverTimestamp()});} toast("Productos ejemplo creados");});
+    $("#loginForm").addEventListener("submit",async(e)=>{
+      e.preventDefault();
+      try{ await signInWithEmailAndPassword(auth,$("#loginEmail").value.trim(),$("#loginPassword").value); }
+      catch(err){ console.error(err); toast("Correo o contraseña incorrectos"); }
+    });
+    $("#logoutBtn").addEventListener("click",()=>signOut(auth));
+    $("#productForm").addEventListener("submit",saveProduct); $("#clearBtn").addEventListener("click",resetForm); $("#resetFormBtn").addEventListener("click",resetForm); $("#image").addEventListener("input",imgPreview); $("#search").addEventListener("input",renderProducts); $("#filterCat").addEventListener("change",renderProducts); $("#refreshBtn").addEventListener("click",renderProducts); $("#settingsForm").addEventListener("submit",saveSettings); $("#seedBtn").addEventListener("click",seedProducts); $$('.navBtn').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
 
-    fillSelects(); resetForm();
+    initSelectors(); resetForm();
+
+    onAuthStateChanged(auth, async (user)=>{
+      if(user){
+        $("#loginScreen").classList.add("hidden"); $("#appShell").classList.remove("hidden"); $("#userEmail").textContent=user.email||user.uid;
+        await loadSettings(); listenProducts();
+      }else{
+        $("#appShell").classList.add("hidden"); $("#loginScreen").classList.remove("hidden");
+        if(unsubscribeProducts) unsubscribeProducts();
+      }
+    });
   </script>
 </body>
 </html>
